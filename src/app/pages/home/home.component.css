@@ -1,0 +1,48 @@
+.container .containerTitle{
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+
+.container .containerTitle h1{
+    font-size: 50px;
+}
+
+.container .containerInput{
+    width: 560px;
+    height: 44px;
+    margin: 0 auto;
+    border-radius: 100px;
+    border: 1px solid #5f6368;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.container .containerInput input{
+    width: 500px;
+    height: 34px;
+    border: none;
+    font-size: 18px;
+    outline: none;
+    
+}
+
+.container .containerInput:hover{
+    box-shadow: 0 1px 6px #5f6368;
+}
+
+.container .containerInput mat-icon{
+    padding: 0 10px;
+}
+
+.container .containerButtons{
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15%;
+}
+
+.container .containerButtons .btn{
+    width: 220px;
+}
