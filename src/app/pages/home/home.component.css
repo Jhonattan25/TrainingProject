@@ -1,15 +1,19 @@
+.container{
+    height: 90vh;
+}
+
 .container .containerTitle{
     text-align: center;
-    margin-top: 40px;
-    margin-bottom: 25px;
+    margin: 40px 0;
 }
 
 .container .containerTitle h1{
     font-size: 50px;
+    
 }
 
 .container .containerInput{
-    width: 560px;
+    max-width: 560px;
     height: 44px;
     margin: 0 auto;
     border-radius: 100px;
@@ -20,7 +24,7 @@
 }
 
 .container .containerInput input{
-    width: 500px;
+    max-width: 500px;
     height: 34px;
     border: none;
     font-size: 18px;
@@ -40,9 +44,41 @@
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
-    padding: 0 15%;
+    padding: 0 20%;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
 }
 
 .container .containerButtons .btn{
     width: 220px;
+}
+
+/** Images */
+
+img{
+    width: 100%;
+}
+.containerImgs{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10%;
+    
+}
+
+.containerImgs .containerImg{
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.containerImgs .imgLost{
+   
+    padding-right: 5%;
+    border-right: 1px #5f636880 solid;
+}
+
+.containerImgs .imgFound{
+   
+    padding-left: 5%;
 }
