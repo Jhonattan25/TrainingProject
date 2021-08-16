@@ -1,0 +1,36 @@
+.elementsformCard{
+    text-align:  center;
+ }
+ .formCard{
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.example-full-width{
+    width: 70%;
+}
+.example-section{
+    display: flex;
+    justify-content: center;
+}
+.options-form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 20px;
+}
+.images-form p{
+    margin-right: 20px;
+}
+.images-form{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+.description-form{
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+.description-form p{
+    margin-right: 20px;
+}
