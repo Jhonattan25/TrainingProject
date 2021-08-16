@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
+import { AppRoutingModule } from './app-routing-module';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -28,8 +29,8 @@ import { ReportFoundComponent } from './pages/report-found/report-found.componen
     BrowserModule,
     FormsModule,
     MaterialModule,
-    BrowserAnimationsModule
-    
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
