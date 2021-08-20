@@ -1,14 +1,17 @@
 .content{
-    height: 90vh;
+    min-height: 72vh;
+    padding-top: 40px;
 }
 
 .content .contentTitle{
     text-align: center;
-    margin: 40px 0;
+    margin: 0;
+    margin-bottom: 40px;
 }
 
 .content .contentTitle h1{
     font-size: 50px;
+    margin: 0;
 }
 
 .content .contentInput{
@@ -72,24 +75,24 @@ img{
     display: flex;
     justify-content: space-between;
     padding: 0 10%;
-    
+    margin-bottom: 50px;
+    flex-wrap: wrap;
 }
 
 .contentImgs .contentImg{
     width: 50%;
+    box-sizing: border-box;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 100px;
+    grid-template-columns:  repeat(3, minmax(67px, 1fr));
+    grid-gap: 90px;
 }
 
 .contentImgs .imgLost{
-   
     padding-right: 5%;
     border-right: 1px #5f636880 solid;
 }
 
 .contentImgs .imgFound{
-   
     padding-left: 5%;
 }
 

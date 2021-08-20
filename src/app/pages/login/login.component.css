@@ -1,11 +1,20 @@
+.loginCard{
+    min-height: 69vh;
+    width: 50%;
+    margin: 30px auto;
+}
+
 .elementsCard{
    text-align:  center;
 }
-.loginCard{
-    width: 50%;
-    margin: 0 auto;
-    margin-top: 30px;
-}
+
 .example-full-width{
-    width: 70%;
+    width: 80%;
+}
+
+.buttonsLogin{
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
 }
