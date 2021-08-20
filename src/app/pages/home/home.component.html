@@ -1,17 +1,20 @@
-<section class="container">
-    <div class="containerTitle">
+<section class="content">
+    <div class="contentTitle">
         <h1>Documentos</h1>
     </div>
-    <div class="containerInput">
+    <div class="contentInput">
         <mat-icon>search</mat-icon>
         <input type="text" placeholder="Buscar documento">
     </div>
-    <div class="containerButtons">
-        <button class="containerButtonsLost btn" mat-stroked-button color="primary">Documento perdido</button>
-        <button class="containerButtonsFound btn" mat-stroked-button color="primary">Documento encontrado</button>
+    <div class="warning" *ngIf="showWarning">
+        <span>-- No se encontro ningun documento --</span>
     </div>
-    <div class="containerImgs">
-        <div class="imgLost containerImg">
+    <div class="contentButtons">
+        <button class="contentButtonsLost btn" mat-stroked-button color="primary" (click)="showWarning=!showWarning">Documento perdido</button>
+        <button class="contentButtonsFound btn" mat-stroked-button color="primary" (click)="showWarning=!showWarning">Documento encontrado</button>
+    </div>
+    <div class="contentImgs">
+        <div class="imgLost contentImg">
             <img src="../../../assets/images/imgLost.png" alt="Imagen de un documento perdido">
             <img src="../../../assets/images/imgLost.png" alt="Imagen de un documento perdido">
             <img src="../../../assets/images/imgLost.png" alt="Imagen de un documento perdido">
@@ -19,7 +22,7 @@
             <img src="../../../assets/images/imgLost.png" alt="Imagen de un documento perdido">
             <img src="../../../assets/images/imgLost.png" alt="Imagen de un documento perdido">
         </div>
-        <div class="imgFound containerImg">
+        <div class="imgFound contentImg">
             <img src="../../../assets/images/imgFound.png" alt="Imagen de un documento encontrado">
             <img src="../../../assets/images/imgFound.png" alt="Imagen de un documento encontrado">
             <img src="../../../assets/images/imgFound.png" alt="Imagen de un documento encontrado">

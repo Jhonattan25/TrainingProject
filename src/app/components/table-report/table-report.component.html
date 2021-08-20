@@ -1,0 +1,18 @@
+<table class="table table-hover mat-elevation-z8">
+    <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Numero de documento</th>
+            <th scope="col">Nombre completo</th>
+            <th scope="col">Fecha de reporte</th>
+        </tr>
+    </thead>
+    <tbody class="tableBody">
+        <tr class="bodyRow" *ngFor="let document of documents; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{document.numero}}</td>
+            <td>{{document.nombre}}</td>
+            <td>{{document.fecha}}</td>
+        </tr>
+    </tbody>
+  </table>
