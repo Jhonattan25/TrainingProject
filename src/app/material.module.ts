@@ -4,6 +4,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatTableModule} from '@angular/material/table';
 
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
@@ -15,7 +16,8 @@ import {MatInputModule} from '@angular/material/input';
               MatIconModule, 
               MatCardModule,
               MatInputModule,
-              MatCheckboxModule]
+              MatCheckboxModule,
+              MatTableModule]
 })
 
 export class MaterialModule{}

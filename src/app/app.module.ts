@@ -13,6 +13,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { FormReportComponent } from './components/form-report/form-report.component';
 import { ReportLostComponent } from './pages/report-lost/report-lost.component';
 import { ReportFoundComponent } from './pages/report-found/report-found.component';
+import { TableReportComponent } from './components/table-report/table-report.component';
+import { ConsultLostComponent } from './pages/consult-lost/consult-lost.component';
+import { ConsultFoundComponent } from './pages/consult-found/consult-found.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,10 @@ import { ReportFoundComponent } from './pages/report-found/report-found.componen
     FooterComponent,
     FormReportComponent,
     ReportLostComponent,
-    ReportFoundComponent
+    ReportFoundComponent,
+    TableReportComponent,
+    ConsultLostComponent,
+    ConsultFoundComponent
   ],
   imports: [
     BrowserModule,
