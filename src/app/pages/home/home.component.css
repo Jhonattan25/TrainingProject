@@ -64,6 +64,8 @@
 
 .content .contentButtons .btn{
     width: 220px;
+    color: #4974a5;
+    border-color: #00000036;
 }
 
 /** Images */

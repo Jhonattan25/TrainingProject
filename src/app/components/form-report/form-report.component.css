@@ -34,3 +34,8 @@
 .description-form p{
     margin-right: 20px;
 }
+
+.btn{
+    color: #4974a5;
+    border-color: #00000036;
+}
