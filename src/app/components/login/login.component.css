@@ -1,0 +1,19 @@
+.elementsCard{
+    text-align:  center;
+ }
+ 
+ .example-full-width{
+     width: 80%;
+ }
+ 
+ .buttonsLogin{
+     width: 80%;
+     display: flex;
+     justify-content: space-between;
+     margin: 0 auto;
+ }
+ 
+ .buttonsLogin .btn{
+     color: #4974a5;
+     border-color: #00000036;
+ }

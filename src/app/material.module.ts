@@ -8,6 +8,7 @@ import {MatTableModule} from '@angular/material/table';
 
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
     exports: [MatMenuModule,
@@ -17,7 +18,9 @@ import {MatInputModule} from '@angular/material/input';
               MatCardModule,
               MatInputModule,
               MatCheckboxModule,
-              MatTableModule]
+              MatTableModule,
+              MatDialogModule
+              ]
 })
 
 export class MaterialModule{}
