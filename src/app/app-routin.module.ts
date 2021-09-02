@@ -3,9 +3,9 @@ import { RouterModule, Routes } from "@angular/router";
 import { ConsultFoundComponent } from "./pages/consult-found/consult-found.component";
 import { ConsultLostComponent } from "./pages/consult-lost/consult-lost.component";
 import { HomeComponent } from "./pages/home/home.component";
-//import { LoginComponent } from "./pages/login/login.component"; {path: 'login', component: LoginComponent},
 import { ReportFoundComponent } from "./pages/report-found/report-found.component";
 import { ReportLostComponent } from "./pages/report-lost/report-lost.component";
+import { RegisterComponent } from "./pages/register/register.component";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -13,6 +13,7 @@ const routes: Routes = [
     {path: 'reportFound', component: ReportFoundComponent},
     {path: 'consultLost', component: ConsultLostComponent},
     {path: 'consultFound', component: ConsultFoundComponent},
+    {path: 'register', component: RegisterComponent},
     {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
