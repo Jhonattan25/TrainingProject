@@ -11,4 +11,5 @@ export class HomeComponent implements OnInit {
   }
 
   showWarning:boolean = false;
+  value = 'Clear me';
 }

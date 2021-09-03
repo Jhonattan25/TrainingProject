@@ -1,4 +1,4 @@
-.loginCard{
+.registerCard{
     min-height: 69vh;
     width: 50%;
     margin: 30px auto;
@@ -12,14 +12,12 @@
     width: 80%;
 }
 
-.buttonsLogin{
+.buttonsLRegister{
     width: 80%;
-    display: flex;
-    justify-content: space-between;
     margin: 0 auto;
 }
 
-.buttonsLogin .btn{
+.buttonsRegister .btn{
     color: #4974a5;
     border-color: #00000036;
 }
