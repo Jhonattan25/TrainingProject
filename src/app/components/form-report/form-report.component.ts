@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-form-report',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./form-report.component.css']
 })
 export class FormReportComponent implements OnInit {
+  @Input() title:any;
   constructor() { }
   ngOnInit(): void {
   }

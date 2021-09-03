@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./report-found.component.css']
 })
 export class ReportFoundComponent implements OnInit {
-
+  title:string="Reportar documentos encontrados";
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  
 }
