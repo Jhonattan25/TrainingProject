@@ -12,4 +12,9 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  cities: Array<any> = [
+    {value: '1', viewValue: 'Armenia'},
+    {value: '2', viewValue: 'Montenegro'},
+    {value: '3', viewValue: 'Calarca'}
+  ];
 }

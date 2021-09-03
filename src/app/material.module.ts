@@ -9,6 +9,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
     exports: [MatMenuModule,
@@ -19,7 +20,8 @@ import {MatDialogModule} from '@angular/material/dialog';
               MatInputModule,
               MatCheckboxModule,
               MatTableModule,
-              MatDialogModule
+              MatDialogModule,
+              MatSelectModule
               ]
 })
 

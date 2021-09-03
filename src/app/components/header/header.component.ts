@@ -19,16 +19,15 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  showLogin(){
-    //this.router.navigate(['/login']);
-    const dialogRef = this.dialog.open(LoginComponent);
-  }
-
   showReportLost(){
     this.router.navigate(['/reportLost']);
   }
 
   showReportFound(){
     this.router.navigate(['/reportFound']);
+  }
+
+  showLogin(){
+    const dialogRef = this.dialog.open(LoginComponent);
   }
 }

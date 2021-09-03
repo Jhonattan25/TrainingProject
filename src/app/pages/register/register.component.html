@@ -17,6 +17,14 @@
                     <mat-label>Email</mat-label>
                     <input matInput placeholder="Ingresar email" type="password">
                 </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Ciudad</mat-label>
+                    <mat-select>
+                        <mat-option *ngFor="let city of cities" [value]="city.value">
+                            {{city.viewValue}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
             <div class="buttonsLogin">
                 <button class="btnEnterLogin btn" mat-stroked-button color="primary">Ingresar</button>
