@@ -17,6 +17,10 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin: 20px;
+    justify-items: start;
+}
+.example-margin{
+    margin: 2px;
 }
 .images-form p{
     margin-right: 20px;
