@@ -1,22 +1,30 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialogRef} from '@angular/material/dialog';
-import { Router } from '@angular/router';
 //importacion de servicios
 import { ClientService } from '../../client.service';
 //importacion de clases necesarias para manejar formularios reactivos y el routing
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { LoginComponent } from '../../components/login/login.component'
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class LoginComponent implements OnInit {
+export class RegisterComponent implements OnInit {
   //grupo de controles de nuestro formulario
   form!: FormGroup;
 
+  cities: Array<any> = [
+    {value: '1', viewValue: 'Armenia'},
+    {value: '2', viewValue: 'Montenegro'},
+    {value: '3', viewValue: 'Calarca'}
+  ];
+
   //inyeccion de dependencias
-  constructor(public client:ClientService, private fb:FormBuilder, private router: Router, public dialogRef: MatDialogRef<LoginComponent>) { }
+  constructor(public client:ClientService, private fb:FormBuilder, private router:Router, public dialog: MatDialog) { }
 
   //en ngOnInit() metemos todas las instrucciones que queremos que se ejecuten apenas se cree nuestro componente
   ngOnInit(): void {
@@ -25,13 +33,10 @@ export class LoginComponent implements OnInit {
     //se configuran los valores iniciales de cada input y las validaciones correspondientes
     this.form = this.fb.group({
       cedula: ['', Validators.required],
+      nombre: ['', Validators.required],
+      email: ['', Validators.email],
       password: ['', Validators.required]
     });
-  }
-  
-  showRegister(){
-    this.dialogRef.close();
-    this.router.navigate(['/register']);
   }
 
   //metodo que se llama para enviar el formulario cuando ocurre el evento (ngSubmit) 
@@ -41,9 +46,12 @@ export class LoginComponent implements OnInit {
     if (this.form.valid) {
       //se envian los datos del formulario mediante una solicitud POST, los valores de los inputs del formulario 
       //se recogen usando los controles "email" y "password" para formar el json a enviar..
-      this.client.postRequestLogin('http://localhost:10101/login', {
+      this.client.postRequestSendForm('http://localhost:10101/register', {
         cedula: this.form.value.cedula,
-        password: this.form.value.password
+        nombre: this.form.value.nombre,
+        email: this.form.value.email,
+        password: this.form.value.password,
+        idCiudad: 1
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
         (response: any) => {
@@ -59,7 +67,7 @@ export class LoginComponent implements OnInit {
           //dirigimos al usuario a la ruta /ayuda
           //this.route.navigate( ['/ayuda']); */
           this.router.navigate( ['/']);
-          this.dialogRef.close();
+          const dialogRef = this.dialog.open(LoginComponent);
       },
       //si ocurre un error en el proceso de envío del formulario...
       (error) => {
