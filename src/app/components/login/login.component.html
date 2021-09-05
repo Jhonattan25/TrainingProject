@@ -1,20 +1,20 @@
 <div class="elementsCard">
     <h1 mat-dialog-title>Iniciar Sesión</h1>
     <div mat-dialog-content>
-        <form class="loginForm">
+        <form [formGroup]="form" class="loginForm" (ngSubmit)="onSubmit()">
             <div class="inputsLogin">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Usuario</mat-label>
-                    <input matInput placeholder="Ingresar usuario">
+                    <input matInput placeholder="Ingresar usuario" formControlName="cedula">
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Contraseña</mat-label>
-                    <input matInput placeholder="Ingresar contraseña" type="password">
+                    <input matInput placeholder="Ingresar contraseña" type="password" formControlName="password">
                 </mat-form-field>
             </div>
             <div class="buttonsLogin">
-                <button class="btnEnterLogin btn" mat-stroked-button color="primary">Ingresar</button>
-                <button class="btnEnterRegister btn" mat-stroked-button color="primary">Registrar</button>
+                <button class="btnEnterLogin btn" mat-stroked-button type="submit">Ingresar</button>
+                <button class="btnEnterRegister btn" mat-stroked-button (click)="showRegister()">Registrar</button>
             </div>
         </form>
     </div>
