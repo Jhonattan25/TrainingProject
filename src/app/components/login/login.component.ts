@@ -28,11 +28,7 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
+  
   showRegister(){
     this.dialogRef.close();
     this.router.navigate(['/register']);
