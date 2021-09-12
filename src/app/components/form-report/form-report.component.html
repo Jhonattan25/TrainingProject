@@ -1,23 +1,23 @@
 <mat-card class="formCard">
     <div class="elementsformCard">
         <h1>{{title}}</h1>
-        <form class="forms-repeat">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="forms-repeat" >
             <div class="inputsforms">
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Numero Documento</mat-label>
-                    <input matInput type="number">
+                    <input matInput type="number" formControlName="numDocument">
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Nombre Completo</mat-label>
-                    <input matInput type="text">
+                    <input matInput type="text" formControlName="fullname">
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Correo Electronico</mat-label>
-                    <input matInput type="email">
+                    <input matInput type="email" formControlName="email">
                 </mat-form-field>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Fecha</mat-label>
-                    <input matInput type="date">
+                    <input matInput type="date" formControlName="date">
                 </mat-form-field>
             </div>
             <section class="example-section">
@@ -37,10 +37,10 @@
             </div>
             <div class="description-form">
                 <p>Descripcion </p>
-                <textarea name="descripcion" rows="10" cols="40"></textarea>
+                <textarea name="descripcion" rows="10" cols="40" formControlName="description"></textarea>
             </div>
             <div class="buttonsLogin">
-                <button class="btnEnterLogin btn" mat-stroked-button color="primary">Registrar</button>
+                <button type="submit" class="btnEnterLogin btn" mat-stroked-button color="primary">Registrar</button>
             </div>
         </form>
     </div>
