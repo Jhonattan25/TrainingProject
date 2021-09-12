@@ -49,15 +49,12 @@ export class LoginComponent implements OnInit {
         (response: any) => {
           //se imprime la respuesta del server
           console.log(response);
-          /* //se guarda el valor de la propiedad email en el almacenamiento local persistente
-          localStorage.setItem('email', response.email)
-          //se guarda el valor de la propiedad password en el almacenamiento local por sesión
-          //estos datos se borran tan pronto el usuario cierra la ventana
-          sessionStorage.setItem('pass', response.password)
+          //se guarda el valor de la propiedad email en el almacenamiento local persistente
+          localStorage.setItem('token', response.token)
           //recuperamos el valor de la porpiedad email guardada anteriormete y la imprimimos
-          console.log(localStorage.getItem('email'));
+          console.log(localStorage.getItem('token'));
           //dirigimos al usuario a la ruta /ayuda
-          //this.route.navigate( ['/ayuda']); */
+          //this.route.navigate( ['/ayuda']);
           this.router.navigate( ['/']);
           this.dialogRef.close();
       },
