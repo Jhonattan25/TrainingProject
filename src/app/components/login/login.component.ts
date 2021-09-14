@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           //se imprime la respuesta del server
           console.log(response);
           //se guarda el valor de la propiedad email en el almacenamiento local persistente
-          localStorage.setItem('token', response.token)
+          localStorage.setItem('token', response.token);
           //recuperamos el valor de la porpiedad email guardada anteriormete y la imprimimos
           console.log(localStorage.getItem('token'));
           //dirigimos al usuario a la ruta /ayuda
