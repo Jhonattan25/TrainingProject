@@ -57,15 +57,7 @@ export class RegisterComponent implements OnInit {
         (response: any) => {
           //se imprime la respuesta del server
           console.log(response);
-          /* //se guarda el valor de la propiedad email en el almacenamiento local persistente
-          localStorage.setItem('email', response.email)
-          //se guarda el valor de la propiedad password en el almacenamiento local por sesión
-          //estos datos se borran tan pronto el usuario cierra la ventana
-          sessionStorage.setItem('pass', response.password)
-          //recuperamos el valor de la porpiedad email guardada anteriormete y la imprimimos
-          console.log(localStorage.getItem('email'));
-          //dirigimos al usuario a la ruta /ayuda
-          //this.route.navigate( ['/ayuda']); */
+         
           this.router.navigate( ['/']);
           const dialogRef = this.dialog.open(LoginComponent);
       },
