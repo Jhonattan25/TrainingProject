@@ -6,40 +6,80 @@
     margin: 0 auto;
     margin-top: 30px;
 }
+
+.forms-repeat p{
+    margin: 0;
+}
+
 .example-full-width{
     width: 70%;
 }
 .example-section{
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
+
+.example-section p{
+    width: 25%;
+    text-align: left;
+}
+
 .options-form{
+    width: 72%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin: 20px;
     justify-items: start;
+    grid-gap: 5px;
 }
+
 .example-margin{
     margin: 2px;
 }
-.images-form p{
-    margin-right: 20px;
-}
+
 .images-form{
-    margin: 20px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
+
+.images-form p{
+    width: 25%;
+    text-align: left;
+}
+
+.images-form input{
+    width: 72%;
+}
+
 .description-form{
-    margin: 20px;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
+
 .description-form p{
-    margin-right: 20px;
+    width: 25%;
+    text-align: left;
+}
+
+.description-form textarea{
+    width: 72%;
+}
+
+.buttonsLogin{
+    width: 70%;
+    margin: 0 auto;
 }
 
 .btn{
+    width: 50%;
     color: #4974a5;
     border-color: #00000036;
 }

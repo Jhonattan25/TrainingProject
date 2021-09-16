@@ -1,17 +1,23 @@
+*{
+    box-sizing: content-box;
+}
+
 .content{
-    min-height: 72vh;
-    padding-top: 40px;
+    min-height: 69vh;
+    padding-top: 60px;
 }
 
 .content .contentTitle{
     text-align: center;
-    margin: 0;
-    margin-bottom: 40px;
+    margin: 0 auto;
+    margin-bottom: 45px;
 }
 
 .content .contentTitle h1{
-    font-size: 50px;
+    display: inline-block;
+    font-size: 60px;
     margin: 0;
+    text-shadow: 1px 1px 5px #5f6368;
 }
 
 .content .contentInput{
@@ -23,17 +29,16 @@
     border: 1px solid #5f6368;
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
 }
 
 .content .contentInput input{
     width: 100%;
-    max-width: 500px;
+    max-width: 473px;
     height: 34px;
     border: none;
     font-size: 18px;
     outline: none;
-    
+    text-align: center;
 }
 
 .content .contentInput:hover{
@@ -49,7 +54,7 @@
 .content .warning{
     text-align: center;
     color: #F33;
-    margin-bottom: 10px;
+    margin: 10px 0;
     font-size: 15px;
 }
 
@@ -58,7 +63,8 @@
     display: flex;
     justify-content: space-between;
     padding: 0 20%;
-    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 60px;
     flex-wrap: wrap;
 }
 
@@ -86,7 +92,7 @@ img{
     box-sizing: border-box;
     display: grid;
     grid-template-columns:  repeat(3, minmax(67px, 1fr));
-    grid-gap: 90px;
+    grid-gap: 50px;
 }
 
 .contentImgs .imgLost{
@@ -96,8 +102,4 @@ img{
 
 .contentImgs .imgFound{
     padding-left: 5%;
-}
-
-*{
-    box-sizing: content-box;
 }
