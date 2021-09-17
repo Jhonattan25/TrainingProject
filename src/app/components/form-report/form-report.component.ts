@@ -50,7 +50,7 @@ export class FormReportComponent implements OnInit {
         fecha: this.form.value.date,
         estado : 1,
         perdido: 1,
-        cedulaFuncionario: "1234",
+        cedulaFuncionario: "12345",
         idCiudad: 1
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
