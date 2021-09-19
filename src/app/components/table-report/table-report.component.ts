@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-table-report',
@@ -7,14 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableReportComponent implements OnInit {
 
+  @Input() documents!:Array<any>;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  documents:Array<any> = [
-    {numero:123, nombre:'Pedro', fecha:'2021-05-02'},
-    {numero:456, nombre:'Pepe', fecha:'2021-02-01'},
-    {numero:789, nombre:'Sara', fecha:'2020-12-25'}
-  ];
 }

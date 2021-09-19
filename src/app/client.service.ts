@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,8 @@ export class ClientService {
 
   //metodo que recibe como parametro una url un json a ser enviado. Esta solicitud se hace con metodo POST
   //en este caso el json proviene de los datos de un formulario.
-  postRequestSendForm(route: string, data:any) {
-    let config:any = {
+  postRequestSendForm(route: string, data: any) {
+    let config: any = {
       responseType: "json"
     }
 
@@ -22,16 +22,56 @@ export class ClientService {
     return this.http.post(route, data, config);
   }
 
-    //metodo que recibe como parametro una url un json a ser enviado. Esta solicitud se hace con metodo POST
+  //metodo que recibe como parametro una url un json a ser enviado. Esta solicitud se hace con metodo POST
   //en este caso el json proviene de los datos de un formulario.
-  postRequestLogin(route: string, data:any) {
-    let config:any = {
+  postRequestLogin(route: string, data: any) {
+    let config: any = {
       responseType: "json"
     }
-      
+
     const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
     config["header"] = header;
     //Notese que como tercer parametro se pasa la configuracion de la request
     return this.http.post(route, data, config);
+  }
+
+  getRequestLostDocuments(route: string) {
+    //configuracion del tipo de respuesta esperado
+    let config: any = {
+      responseType: "json"
+    }
+    console.log(localStorage.getItem('token'));
+
+    //configuracion de una cabecera,, en este caso la cabecera se llama Authorization y
+    //su valor es el token almacenado e localStorage
+    const header = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    config["headers"] = header;
+    //se retorna el observable el cual emitira un valor una vez el server haya devuelto 
+    //la respuesta, tal valor es la descarga esperada. Recordar que el observador debe
+    //suscribirse a este observable para poder tener acceso al valor de descarga
+    //esto se puede ver en la linea 83 de ejemplos.component.ts
+    //Notese que como segundo parametro se pasa la configuracion de la request
+
+    return this.http.get(route, config);
+  }
+
+  getRequestFoundDocuments(route: string) {
+    //configuracion del tipo de respuesta esperado
+    let config: any = {
+      responseType: "json"
+    }
+    console.log(localStorage.getItem('token'));
+
+    //configuracion de una cabecera,, en este caso la cabecera se llama Authorization y
+    //su valor es el token almacenado e localStorage
+    const header = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    config["headers"] = header;
+    //se retorna el observable el cual emitira un valor una vez el server haya devuelto 
+    //la respuesta, tal valor es la descarga esperada. Recordar que el observador debe
+    //suscribirse a este observable para poder tener acceso al valor de descarga
+    //esto se puede ver en la linea 83 de ejemplos.component.ts
+    //Notese que como segundo parametro se pasa la configuracion de la request
+
+    return this.http.get(route, config);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 //importacion de servicios
 import { ClientService } from '../../client.service';
 //importacion de clases necesarias para manejar formularios reactivos y el routing
@@ -13,8 +13,6 @@ import { Router } from '@angular/router';
 export class FormReportComponent implements OnInit {
   //grupo de controles de nuestro formulario
   form!: FormGroup;
-
-
 
   @Input() title:any;
   
