@@ -17,7 +17,7 @@ export class ConsultFoundComponent implements OnInit {
   }
 
   uploadDocument(){
-    this.client.getRequestFoundDocuments("http://localhost:10101/foundDocuments").subscribe(
+    this.client.getRequestConsultDocuments("http://localhost:10101/consultDocuments/?category=0").subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
       (response: any) => {
         this.documents = response.documents;

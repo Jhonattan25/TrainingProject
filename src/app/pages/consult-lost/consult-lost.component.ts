@@ -17,12 +17,11 @@ export class ConsultLostComponent implements OnInit {
   }
 
   uploadDocument(){
-    this.client.getRequestLostDocuments("http://localhost:10101/lostDocuments").subscribe(
+    this.client.getRequestConsultDocuments("http://localhost:10101/consultDocuments/?category=1").subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
       (response: any) => {
         this.documents = response.documents;
         console.log(response);
-  
     },
     //si ocurre un error en el proceso de envío del formulario...
     (error) => {

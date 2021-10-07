@@ -35,7 +35,7 @@ export class ClientService {
     return this.http.post(route, data, config);
   }
 
-  getRequestLostDocuments(route: string) {
+  getRequestConsultDocuments(route: string) {
     //configuracion del tipo de respuesta esperado
     let config: any = {
       responseType: "json"
@@ -55,7 +55,7 @@ export class ClientService {
     return this.http.get(route, config);
   }
 
-  getRequestFoundDocuments(route: string) {
+  /* getRequestFoundDocuments(route: string) {
     //configuracion del tipo de respuesta esperado
     let config: any = {
       responseType: "json"
@@ -73,5 +73,5 @@ export class ClientService {
     //Notese que como segundo parametro se pasa la configuracion de la request
 
     return this.http.get(route, config);
-  }
+  } */
 }
