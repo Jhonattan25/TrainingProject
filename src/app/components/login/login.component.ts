@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
 
   //inyeccion de dependencias
-  constructor(public client:ClientService, private fb:FormBuilder, private router: Router, public dialogRef: MatDialogRef<LoginComponent>) { }
+  constructor(private client:ClientService, private fb:FormBuilder, private router: Router, public dialogRef: MatDialogRef<LoginComponent>) { }
 
   //en ngOnInit() metemos todas las instrucciones que queremos que se ejecuten apenas se cree nuestro componente
   ngOnInit(): void {
@@ -24,8 +24,8 @@ export class LoginComponent implements OnInit {
     //estos controles se encuentran en cada input del formulario formControlName="cedula" y formControlName="password" 
     //se configuran los valores iniciales de cada input y las validaciones correspondientes
     this.form = this.fb.group({
-      cedula: ['', Validators.required],
-      password: ['', Validators.required]
+      identificationNumber: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
+      password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]]
     });
   }
   
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
       //se envian los datos del formulario mediante una solicitud POST, los valores de los inputs del formulario 
       //se recogen usando los controles "email" y "password" para formar el json a enviar..
       this.client.postRequestLogin('http://localhost:10101/login', {
-        cedula: this.form.value.cedula,
+        identificationNumber: this.form.value.identificationNumber,
         password: this.form.value.password
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
