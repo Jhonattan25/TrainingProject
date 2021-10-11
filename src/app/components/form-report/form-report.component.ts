@@ -44,11 +44,11 @@ export class FormReportComponent implements OnInit {
       }
       //se envian los datos del formulario mediante una solicitud POST, los valores de los inputs del formulario 
       //se recogen usando los controles "email" y "password" para formar el json a enviar..
-      this.client.postRequestSendForm('http://localhost:10101/consultDocuments', {
+      this.client.postRequestSendForm('http://localhost:10101/addDocuments', {
         documentNumber: this.form.value.documentNumber,
         fullName: this.form.value.fullName,
         email: this.form.value.email,
-        descripcion: this.form.value.description,
+        description: this.form.value.description,
         date: this.form.value.date,
         state: 1,
         category: category,

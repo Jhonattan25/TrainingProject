@@ -15,7 +15,7 @@ export class ClientService {
     let config: any = {
       responseType: "json"
     }
-
+    
     const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
     config["header"] = header;
     //Notese que como tercer parametro se pasa la configuracion de la request

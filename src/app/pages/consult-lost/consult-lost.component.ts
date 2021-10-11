@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ClientService } from '../../client.service';
+import { LoginComponent } from '../../components/login/login.component'
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-consult-lost',
@@ -10,7 +12,7 @@ import { ClientService } from '../../client.service';
 export class ConsultLostComponent implements OnInit {
   documents!:Array<any>;
 
-  constructor(public client:ClientService, private router: Router) { }
+  constructor(private client:ClientService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.uploadDocument();
@@ -26,6 +28,7 @@ export class ConsultLostComponent implements OnInit {
     //si ocurre un error en el proceso de envío del formulario...
     (error) => {
       this.router.navigate( ['/']);
+      this.dialog.open(LoginComponent);
       //se imprime el status del error
       console.log(error.status);
       }
