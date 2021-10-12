@@ -14,18 +14,13 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  spinner: boolean = false;
   cities!: Array<any>;
   //grupo de controles de nuestro formulario
   form!: FormGroup;
 
-  /* cities: Array<any> = [
-    {value: '1', viewValue: 'Armenia'},
-    {value: '2', viewValue: 'Montenegro'},
-    {value: '3', viewValue: 'Calarca'}
-  ]; */
-
   //inyeccion de dependencias
-  constructor(private client: ClientService, private fb: FormBuilder, private router: Router, public dialog: MatDialog) { }
+  constructor(private client: ClientService, private fb: FormBuilder, private router: Router, private dialog: MatDialog) { }
 
   //en ngOnInit() metemos todas las instrucciones que queremos que se ejecuten apenas se cree nuestro componente
   ngOnInit(): void {
@@ -47,6 +42,7 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     //si la validacion del formulario es exitosa...
     if (this.form.valid) {
+      this.spinner = true;
       //se envian los datos del formulario mediante una solicitud POST, los valores de los inputs del formulario 
       //se recogen usando los controles "email" y "password" para formar el json a enviar..
       this.client.postRequestSendForm('http://localhost:10101/registerUser', {
@@ -60,7 +56,7 @@ export class RegisterComponent implements OnInit {
         (response: any) => {
           //se imprime la respuesta del server
           console.log(response);
-
+          this.spinner = false;
           this.router.navigate(['/']);
           const dialogRef = this.dialog.open(LoginComponent);
         },
