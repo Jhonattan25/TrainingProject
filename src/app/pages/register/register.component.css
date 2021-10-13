@@ -12,12 +12,17 @@
     width: 80%;
 }
 
-.buttonsLRegister{
+.buttonsRegister{
     width: 80%;
     margin: 0 auto;
 }
 
 .buttonsRegister .btn{
+    width: 100%;
     color: #4974a5;
     border-color: #00000036;
+}
+
+.buttonsRegister .spinner-border{
+    animation-duration: 0.75s;
 }

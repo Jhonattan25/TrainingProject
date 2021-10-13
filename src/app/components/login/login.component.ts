@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   form!: FormGroup;
 
   //inyeccion de dependencias
-  constructor(private client:ClientService, private fb:FormBuilder, private router: Router, public dialogRef: MatDialogRef<LoginComponent>) { }
+  constructor(private client:ClientService, private fb:FormBuilder, private router: Router, private dialogRef: MatDialogRef<LoginComponent>) { }
 
   //en ngOnInit() metemos todas las instrucciones que queremos que se ejecuten apenas se cree nuestro componente
   ngOnInit(): void {
