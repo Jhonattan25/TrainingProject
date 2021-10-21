@@ -9,6 +9,18 @@ export class ClientService {
   //se inyecta el cliente http de Angular
   constructor(private http: HttpClient) { }
 
+  updateRequestActivation(route: string) {
+    let config: any = {
+      responseType: "json"
+    }
+    
+    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
+    config["header"] = header;
+    //Notese que como tercer parametro se pasa la configuracion de la request
+    return this.http.put(route, config);
+  }
+
+
   //metodo que recibe como parametro una url un json a ser enviado. Esta solicitud se hace con metodo POST
   //en este caso el json proviene de los datos de un formulario.
   postRequestSendForm(route: string, data: any) {
