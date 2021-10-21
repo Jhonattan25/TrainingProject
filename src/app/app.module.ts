@@ -18,6 +18,7 @@ import { ConsultLostComponent } from './pages/consult-lost/consult-lost.componen
 import { ConsultFoundComponent } from './pages/consult-found/consult-found.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { ActivationComponent } from './pages/activation/activation.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LoginComponent } from './components/login/login.component';
     ConsultLostComponent,
     ConsultFoundComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ActivationComponent
   ],
   imports: [
     BrowserModule,

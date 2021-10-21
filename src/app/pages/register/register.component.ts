@@ -50,7 +50,8 @@ export class RegisterComponent implements OnInit {
         fullName: this.form.value.fullName,
         email: this.form.value.email,
         password: this.form.value.password,
-        cityCode: "63001"
+        cityCode: "63001",
+        state:false
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
         (response: any) => {
