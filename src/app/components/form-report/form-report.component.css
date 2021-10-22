@@ -12,10 +12,10 @@
 }
 
 .example-full-width{
-    width: 70%;
+    width: 80%;
 }
 .example-section{
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
     margin-bottom: 20px;
     display: flex;
@@ -40,7 +40,7 @@
 }
 
 .images-form{
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
     margin-bottom: 20px;
     display: flex;
@@ -57,7 +57,7 @@
 }
 
 .description-form{
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
     margin-bottom: 20px;
     display: flex;
@@ -73,13 +73,10 @@
     width: 72%;
 }
 
-.buttonsLogin{
-    width: 70%;
-    margin: 0 auto;
-}
-
 .btn{
-    width: 50%;
+    width: 80%;
     color: #4974a5;
     border-color: #00000036;
+    margin: 0 auto;
+
 }
