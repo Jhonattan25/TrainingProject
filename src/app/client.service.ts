@@ -13,11 +13,25 @@ export class ClientService {
     let config: any = {
       responseType: "json"
     }
-    
+
     const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
     config["header"] = header;
+
     //Notese que como tercer parametro se pasa la configuracion de la request
     return this.http.put(route, config);
+  }
+
+  getRequestConsultCities(route: string) {
+    //configuracion del tipo de respuesta esperado
+    let config: any = {
+      responseType: "json"
+    }
+
+    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
+    config["headers"] = header;
+
+    //Notese que como tercer parametro se pasa la configuracion de la request
+    return this.http.get(route, config);
   }
 
 
@@ -27,7 +41,7 @@ export class ClientService {
     let config: any = {
       responseType: "json"
     }
-    
+
     const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
     config["header"] = header;
     //Notese que como tercer parametro se pasa la configuracion de la request
@@ -52,7 +66,6 @@ export class ClientService {
     let config: any = {
       responseType: "json"
     }
-    console.log(localStorage.getItem('token'));
 
     //configuracion de una cabecera,, en este caso la cabecera se llama Authorization y
     //su valor es el token almacenado e localStorage
