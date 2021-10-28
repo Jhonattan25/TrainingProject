@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
     //estos controles se encuentran en cada input del formulario formControlName="cedula" y formControlName="password" 
     //se configuran los valores iniciales de cada input y las validaciones correspondientes
     this.form = this.fb.group({
-      identificationNumber: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
+      identificationNumber: ['', [Validators.required, Validators.min(10000000), Validators.max(9999999999)]],
       fullName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],

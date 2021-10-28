@@ -6,9 +6,19 @@
         <form [formGroup]="form" class="registerForm" (ngSubmit)="onSubmit()">
             <div class="inputsRegister">
                 <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Cedula</mat-label>
+                    <mat-label>Documento</mat-label>
                     <input matInput placeholder="Ingresar cedula" type="number" formControlName="identificationNumber">
                 </mat-form-field>
+                <div class="alert-danger" *ngIf="form.get('identificationNumber')?.errors && (form.get('identificationNumber')?.dirty || form.get('identificationNumber')?.touched)
+                " >
+                    <div class="container-error-message" *ngIf="form.get('identificationNumber')?.hasError('required')">
+                        El campo documento es requerido 
+                    </div>
+                    <div class="container-error-message" *ngIf="form.get('identificationNumber')?.hasError('min')">
+                        El campo documento es de 8 caracteres
+                    </div>
+                </div>
+
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Nombre completo</mat-label>
                     <input matInput placeholder="Ingresar nombre completo" type="text" formControlName="fullName">
@@ -31,7 +41,8 @@
                 </mat-form-field>
             </div>
             <div class="buttonsRegister">
-                <button *ngIf="!spinner" class="btn" mat-stroked-button type="submit">Registrarse</button>
+                <button *ngIf="!spinner" class="btn" mat-stroked-button type="submit" [disabled]="!form.valid"
+                >Registrarse</button>
 
                 <button *ngIf="spinner" class="btn" mat-stroked-button type="submit">
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
