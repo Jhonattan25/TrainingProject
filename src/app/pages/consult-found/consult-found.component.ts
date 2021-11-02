@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class ConsultFoundComponent implements OnInit {
   documents!:Array<any>;
 
-  constructor(public client:ClientService, private router: Router, private dialog: MatDialog) { }
+  constructor(private client:ClientService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.uploadDocument();

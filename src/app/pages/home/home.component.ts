@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms'; 
+import { FormControl, Validators } from '@angular/forms';
+import { ClientService } from '../../client.service';
 
 @Component({
   selector: 'app-home',
@@ -8,30 +9,46 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class HomeComponent implements OnInit {
 
-  documentNumber = new FormControl('',[Validators.required, Validators.minLength(8), Validators.maxLength(10)]);
-  showWarning:boolean = false;
-  showDocuments:boolean = true;
+  document!: Array<any>;
+  documentNumber = new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]);
+  showWarning: boolean = false;
+  showDocuments: boolean = false;
 
-  constructor() { }
+  constructor(private client: ClientService) { }
   ngOnInit(): void {
   }
   value = 'Clear me';
-  mail:string = "hola@gmail.com"
+  mail: string = "hola@gmail.com"
 
-  consultDocument(category:number){
-    console.log(this.documentNumber.dirty);
+  consultDocument(category: number) {
 
-    if(!this.documentNumber.errors){
+    if (!this.documentNumber.errors) {
+      this.client.getRequestConsultDocument(`http://localhost:10101/consultDocument/?category=${category}&documentNumber=${this.documentNumber.value}`).subscribe(
+        //cuando la respuesta del server llega es emitida por el observable mediante next()..
+        (response: any) => {
+          this.document = response.document;
+
+          if (this.document && this.document.length > 0) {
+            this.showDocuments = true;
+            console.log(this.document);
+          } else {
+            this.showDocuments = false;
+            this.showWarning = true;
+            setTimeout(() => {
+              this.showWarning = false;
+            }, 2000);
+          }
+        },
+        (error) => {
+          //se imprime el status del error
+          console.log(error.status);
+        }
+      )
+    } else {
       this.showWarning = true;
-      setTimeout(()=>{
-        this.showWarning = false;
-      }, 2000);
-    }else{
-      this.showWarning = true;
-      setTimeout(()=>{
+      setTimeout(() => {
         this.showWarning = false;
       }, 2000);
     }
-    
   }
 }

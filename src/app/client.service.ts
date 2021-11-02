@@ -80,23 +80,16 @@ export class ClientService {
     return this.http.get(route, config);
   }
 
-  /* getRequestFoundDocuments(route: string) {
-    //configuracion del tipo de respuesta esperado
-    let config: any = {
+  getRequestConsultDocument(route: string) {
+     //configuracion del tipo de respuesta esperado
+     let config: any = {
       responseType: "json"
     }
-    console.log(localStorage.getItem('token'));
 
-    //configuracion de una cabecera,, en este caso la cabecera se llama Authorization y
-    //su valor es el token almacenado e localStorage
-    const header = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
     config["headers"] = header;
-    //se retorna el observable el cual emitira un valor una vez el server haya devuelto 
-    //la respuesta, tal valor es la descarga esperada. Recordar que el observador debe
-    //suscribirse a este observable para poder tener acceso al valor de descarga
-    //esto se puede ver en la linea 83 de ejemplos.component.ts
-    //Notese que como segundo parametro se pasa la configuracion de la request
 
+    //Notese que como tercer parametro se pasa la configuracion de la request
     return this.http.get(route, config);
-  } */
+  }
 }
