@@ -4,6 +4,7 @@ import { ClientService } from '../../client.service';
 //importacion de clases necesarias para manejar formularios reactivos y el routing
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-form-report',
@@ -13,11 +14,13 @@ import { Router } from '@angular/router';
 export class FormReportComponent implements OnInit {
   //grupo de controles de nuestro formulario
   form!: FormGroup;
+  images: any = [];
+  preview!: string;
 
   @Input() title: any;
 
   //inyeccion de dependencias
-  constructor(private client: ClientService, private fb: FormBuilder, private router: Router) { }
+  constructor(private client: ClientService, private fb: FormBuilder, private router: Router, private sanitizer: DomSanitizer) { }
 
   //en ngOnInit() metemos todas las instrucciones que queremos que se ejecuten apenas se cree nuestro componente
   ngOnInit(): void {
@@ -32,6 +35,35 @@ export class FormReportComponent implements OnInit {
       description: ['', Validators.maxLength(1000)]
     });
   }
+
+  captureImage(e:any): any{
+    const capturedImage = e.target.files[0];
+    this.extractBase64(capturedImage).then((image:any) => {
+      this.preview = image.base;
+    });
+    this.images.push(capturedImage);
+  }
+
+  extractBase64 = async ($event:any) => new Promise((resolve, reject)=>{
+    try{
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error =>{
+        resolve({
+          base: null
+        });
+      };
+    }catch(error){
+     reject(error);
+    }
+  });
 
   //metodo que se llama para enviar el formulario cuando ocurre el evento (ngSubmit) 
   //que se encuentra referenciado en el form del HTML
