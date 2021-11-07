@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
 import { LoginComponent } from '../../components/login/login.component'
 import { MatDialog } from '@angular/material/dialog';
 
+import Swal from 'sweetalert2';
+
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -60,6 +64,13 @@ export class RegisterComponent implements OnInit {
           this.spinner = false;
           this.router.navigate(['/']);
           const dialogRef = this.dialog.open(LoginComponent);
+          Swal.fire({
+            icon: 'success',
+            title: 'Registro exitoso',
+            text: 'Por favor vefique su correo eléctronico, para validar la cuenta',
+            background: '#fff',
+            confirmButtonColor: '#045b62'
+          })
         },
         //si ocurre un error en el proceso de envío del formulario...
         (error) => {
