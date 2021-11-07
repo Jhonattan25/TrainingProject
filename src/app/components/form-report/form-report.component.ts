@@ -4,7 +4,6 @@ import { ClientService } from '../../client.service';
 //importacion de clases necesarias para manejar formularios reactivos y el routing
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-form-report',
@@ -20,7 +19,7 @@ export class FormReportComponent implements OnInit {
   @Input() title: any;
 
   //inyeccion de dependencias
-  constructor(private client: ClientService, private fb: FormBuilder, private router: Router, private sanitizer: DomSanitizer) { }
+  constructor(private client: ClientService, private fb: FormBuilder, private router: Router) { }
 
   //en ngOnInit() metemos todas las instrucciones que queremos que se ejecuten apenas se cree nuestro componente
   ngOnInit(): void {
@@ -46,8 +45,6 @@ export class FormReportComponent implements OnInit {
 
   extractBase64 = async ($event:any) => new Promise((resolve, reject)=>{
     try{
-      const unsafeImg = window.URL.createObjectURL($event);
-      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
       const reader = new FileReader();
       reader.readAsDataURL($event);
       reader.onload = () => {
@@ -68,6 +65,14 @@ export class FormReportComponent implements OnInit {
   //metodo que se llama para enviar el formulario cuando ocurre el evento (ngSubmit) 
   //que se encuentra referenciado en el form del HTML
   onSubmit() {
+    const formData = new FormData();
+    this.images.forEach((element:any) => {
+      formData.append('files', element);
+    });
+
+    console.log(formData);
+    
+
     //si la validacion del formulario es exitosa...
     if (this.form.valid) {
       let category: number = 1;
@@ -85,7 +90,8 @@ export class FormReportComponent implements OnInit {
         state: 1,
         category: category,
         //identificationNumber: "12345",
-        cityCode: "63001"
+        cityCode: "63001",
+        image: formData
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
         (response: any) => {
