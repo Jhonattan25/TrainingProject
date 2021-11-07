@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
 import { LoginComponent } from '../../components/login/login.component'
 import { MatDialog } from '@angular/material/dialog';
 
+import Swal from 'sweetalert2';
+
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -30,7 +34,7 @@ export class RegisterComponent implements OnInit {
     //estos controles se encuentran en cada input del formulario formControlName="cedula" y formControlName="password" 
     //se configuran los valores iniciales de cada input y las validaciones correspondientes
     this.form = this.fb.group({
-      identificationNumber: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
+      identificationNumber: ['', [Validators.required, Validators.min(10000000), Validators.max(9999999999)]],
       fullName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
@@ -75,6 +79,13 @@ export class RegisterComponent implements OnInit {
           this.spinner = false;
           this.router.navigate(['/']);
           const dialogRef = this.dialog.open(LoginComponent);
+          Swal.fire({
+            icon: 'success',
+            title: 'Registro exitoso',
+            text: 'Por favor vefique su correo eléctronico, para validar la cuenta',
+            background: '#fff',
+            confirmButtonColor: '#045b62'
+          })
         },
         //si ocurre un error en el proceso de envío del formulario...
         (error) => {
