@@ -28,6 +28,8 @@ export class RegisterComponent implements OnInit {
 
   //en ngOnInit() metemos todas las instrucciones que queremos que se ejecuten apenas se cree nuestro componente
   ngOnInit(): void {
+    this.consultCities();
+    
     //creamos nuestro formulario  tan pronto cargue nuestro componente a partir de los controles que en el HTML llamamos "cedula" y "nombre", etc
     //estos controles se encuentran en cada input del formulario formControlName="cedula" y formControlName="password" 
     //se configuran los valores iniciales de cada input y las validaciones correspondientes
@@ -36,9 +38,22 @@ export class RegisterComponent implements OnInit {
       fullName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
-      cityCode: [''],
-      //cityCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(6)]],
+      cityCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(6)]],
     });
+  }
+
+  consultCities(){
+    this.client.getRequestConsultCities("http://localhost:10101/consultCities").subscribe(
+      //cuando la respuesta del server llega es emitida por el observable mediante next()..
+      (response: any) => {
+        this.cities = response.cities;
+        console.log(response);
+    },
+    //si ocurre un error en el proceso de envío del formulario...
+    (error) => {
+      console.log(error.status);
+      }
+    )
   }
 
   //metodo que se llama para enviar el formulario cuando ocurre el evento (ngSubmit) 
@@ -54,7 +69,7 @@ export class RegisterComponent implements OnInit {
         fullName: this.form.value.fullName,
         email: this.form.value.email,
         password: this.form.value.password,
-        cityCode: "63001",
+        cityCode: this.form.value.cityCode,
         state:false
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..

@@ -33,7 +33,10 @@
             </section>
             <div class="images-form">
                 <p>Imágenes</p> 
-                <input type="file" name="name">
+                <input (change)="captureImage($event)" type="file" name="name"><br>
+            </div>
+            <div *ngIf="preview">
+                <img width="200px" [src]="preview" alt="Imagen subida">
             </div>
             <div class="description-form">
                 <p>Descripción </p>
