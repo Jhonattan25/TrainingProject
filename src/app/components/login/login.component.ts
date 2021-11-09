@@ -12,6 +12,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  spinner: boolean = false;
+
   //grupo de controles de nuestro formulario
   form!: FormGroup;
 
@@ -39,6 +41,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     //si la validacion del formulario es exitosa...
     if (this.form.valid) {
+      this.spinner = true;
       //se envian los datos del formulario mediante una solicitud POST, los valores de los inputs del formulario 
       //se recogen usando los controles "email" y "password" para formar el json a enviar..
       this.client.postRequestLogin('http://localhost:10101/login', {
@@ -47,6 +50,7 @@ export class LoginComponent implements OnInit {
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
         (response: any) => {
+          this.spinner = false;
           //se imprime la respuesta del server
           console.log(response);
           //se guarda el valor de la propiedad email en el almacenamiento local persistente

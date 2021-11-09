@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./form-report.component.css']
 })
 export class FormReportComponent implements OnInit {
+
+  spinner: boolean = false;
+
   //grupo de controles de nuestro formulario
   form!: FormGroup;
   images: any = [];
@@ -72,9 +75,10 @@ export class FormReportComponent implements OnInit {
 
     console.log(formData);
     
-
     //si la validacion del formulario es exitosa...
     if (this.form.valid) {
+      this.spinner = true;
+      
       let category: number = 1;
       if (this.title === 'Reportar documentos encontrados') {
         category = 0;
@@ -91,10 +95,11 @@ export class FormReportComponent implements OnInit {
         category: category,
         //identificationNumber: "12345",
         cityCode: "63001",
-        image: formData
+        //image: formData
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
         (response: any) => {
+          this.spinner = false;
           //se imprime la respuesta del server
           console.log(response);
         },

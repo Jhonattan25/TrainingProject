@@ -42,8 +42,13 @@
                 <p>Descripción </p>
                 <textarea name="descripcion" rows="10" cols="40" formControlName="description"></textarea>
             </div>
-            <div class="buttonsLogin">
-                <button type="submit" class="btnEnterLogin btn" mat-stroked-button color="primary">Registrar</button>
+            <div class="buttonsReport">
+                <button *ngIf="!spinner" type="submit" class="btnEnterLogin btn" mat-stroked-button color="primary">Reportar</button>
+
+                <button *ngIf="spinner" class="btn" mat-stroked-button>
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span class="sr-only"> Reportando...</span>
+                </button>
             </div>
         </form>
     </div>

@@ -82,7 +82,7 @@ export class RegisterComponent implements OnInit {
           Swal.fire({
             icon: 'success',
             title: 'Registro exitoso',
-            text: 'Por favor vefique su correo eléctronico, para validar la cuenta',
+            text: 'Por favor verifique su correo eléctronico, para validar la cuenta',
             background: '#fff',
             confirmButtonColor: '#045b62'
           })

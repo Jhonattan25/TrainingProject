@@ -80,3 +80,7 @@
     margin: 0 auto;
 
 }
+
+.buttonsReport .spinner-border{
+    animation-duration: 0.75s;
+}
