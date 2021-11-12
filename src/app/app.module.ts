@@ -19,6 +19,7 @@ import { ConsultFoundComponent } from './pages/consult-found/consult-found.compo
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ActivationComponent } from './pages/activation/activation.component';
+import { UpdateDataComponent } from './pages/update-data/update-data.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ActivationComponent } from './pages/activation/activation.component';
     ConsultFoundComponent,
     RegisterComponent,
     LoginComponent,
-    ActivationComponent
+    ActivationComponent,
+    UpdateDataComponent
   ],
   imports: [
     BrowserModule,

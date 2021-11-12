@@ -1,0 +1,43 @@
+<mat-card class="upgradeCard">
+    <div class="elementsCard">
+        <div class="containerRegisterTitle">
+            <h1>Actualizar Informacion</h1>
+        </div>
+        <form [formGroup]="form" class="upgradeForm" (ngSubmit)="onSubmit()">
+            <div class="inputsUpgrade">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Cedula</mat-label>
+                    <input matInput placeholder="Ingresar cedula" type="number" formControlName="identificationNumber" [formControl]="inputFormControl">
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nombre completo</mat-label>
+                    <input matInput placeholder="Ingresar nombre completo" type="text" formControlName="fullName">
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input matInput placeholder="Ingresar email" type="email" formControlName="email">
+                </mat-form-field>
+                <!-- <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput placeholder="Ingresar contraseña" type="password" formControlName="password">
+                </mat-form-field> -->
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Ciudad</mat-label>
+                    <mat-select formControlName="cityCode">
+                        <mat-option *ngFor="let city of cities" [value]="city.code">
+                            {{city.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="buttonsUpgrade">
+                <button *ngIf="!spinner" class="btn" mat-stroked-button type="submit">Actualizar</button>
+
+                <button *ngIf="spinner" class="btn" mat-stroked-button type="submit">
+                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span class="sr-only"> Actualizando...</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</mat-card>
