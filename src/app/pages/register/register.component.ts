@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
 import { LoginComponent } from '../../components/login/login.component'
 import { MatDialog } from '@angular/material/dialog';
 
+import Swal from 'sweetalert2';
+
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -24,17 +28,32 @@ export class RegisterComponent implements OnInit {
 
   //en ngOnInit() metemos todas las instrucciones que queremos que se ejecuten apenas se cree nuestro componente
   ngOnInit(): void {
+    this.consultCities();
+    
     //creamos nuestro formulario  tan pronto cargue nuestro componente a partir de los controles que en el HTML llamamos "cedula" y "nombre", etc
     //estos controles se encuentran en cada input del formulario formControlName="cedula" y formControlName="password" 
     //se configuran los valores iniciales de cada input y las validaciones correspondientes
     this.form = this.fb.group({
-      identificationNumber: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
+      identificationNumber: ['', [Validators.required, Validators.min(10000000), Validators.max(9999999999)]],
       fullName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
-      cityCode: [''],
-      //cityCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(6)]],
+      cityCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(6)]],
     });
+  }
+
+  consultCities(){
+    this.client.getRequestConsultCities("http://localhost:10101/consultCities").subscribe(
+      //cuando la respuesta del server llega es emitida por el observable mediante next()..
+      (response: any) => {
+        this.cities = response.cities;
+        console.log(response);
+    },
+    //si ocurre un error en el proceso de envío del formulario...
+    (error) => {
+      console.log(error.status);
+      }
+    )
   }
 
   //metodo que se llama para enviar el formulario cuando ocurre el evento (ngSubmit) 
@@ -50,7 +69,7 @@ export class RegisterComponent implements OnInit {
         fullName: this.form.value.fullName,
         email: this.form.value.email,
         password: this.form.value.password,
-        cityCode: "63001",
+        cityCode: this.form.value.cityCode,
         state:false
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
@@ -60,6 +79,13 @@ export class RegisterComponent implements OnInit {
           this.spinner = false;
           this.router.navigate(['/']);
           const dialogRef = this.dialog.open(LoginComponent);
+          Swal.fire({
+            icon: 'success',
+            title: 'Registro exitoso',
+            text: 'Por favor verifique su correo eléctronico, para validar la cuenta',
+            background: '#fff',
+            confirmButtonColor: '#045b62'
+          })
         },
         //si ocurre un error en el proceso de envío del formulario...
         (error) => {

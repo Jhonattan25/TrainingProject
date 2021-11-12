@@ -11,8 +11,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./form-report.component.css']
 })
 export class FormReportComponent implements OnInit {
+
+  spinner: boolean = false;
+
   //grupo de controles de nuestro formulario
   form!: FormGroup;
+  images: any = [];
+  preview!: string;
 
   @Input() title: any;
 
@@ -33,11 +38,47 @@ export class FormReportComponent implements OnInit {
     });
   }
 
+  captureImage(e:any): any{
+    const capturedImage = e.target.files[0];
+    this.extractBase64(capturedImage).then((image:any) => {
+      this.preview = image.base;
+    });
+    this.images.push(capturedImage);
+  }
+
+  extractBase64 = async ($event:any) => new Promise((resolve, reject)=>{
+    try{
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error =>{
+        resolve({
+          base: null
+        });
+      };
+    }catch(error){
+     reject(error);
+    }
+  });
+
   //metodo que se llama para enviar el formulario cuando ocurre el evento (ngSubmit) 
   //que se encuentra referenciado en el form del HTML
   onSubmit() {
+    const formData = new FormData();
+    this.images.forEach((element:any) => {
+      formData.append('files', element);
+    });
+
+    console.log(formData);
+    
     //si la validacion del formulario es exitosa...
     if (this.form.valid) {
+      this.spinner = true;
+      
       let category: number = 1;
       if (this.title === 'Reportar documentos encontrados') {
         category = 0;
@@ -53,10 +94,12 @@ export class FormReportComponent implements OnInit {
         state: 1,
         category: category,
         //identificationNumber: "12345",
-        cityCode: "63001"
+        cityCode: "63001",
+        //image: formData
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
         (response: any) => {
+          this.spinner = false;
           //se imprime la respuesta del server
           console.log(response);
         },
