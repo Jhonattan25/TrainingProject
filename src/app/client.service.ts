@@ -120,7 +120,7 @@ export class ClientService {
     return this.http.get(route, config);
   }
 
-  /*getRequestConsultDocument(route: string) {
+  getRequestConsultDocument(route: string) {
      //configuracion del tipo de respuesta esperado
      let config: any = {
       responseType: "json"
@@ -131,5 +131,5 @@ export class ClientService {
 
     //Notese que como tercer parametro se pasa la configuracion de la request
     return this.http.get(route, config);
-  }*/
+  }
 }
