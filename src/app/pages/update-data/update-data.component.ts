@@ -15,11 +15,12 @@ export class UpdateDataComponent implements OnInit {
   cities!: Array<any>;
   inputFormControl = new FormControl({ value: 12345, disabled: false });
   fullName!:string;
+  identificationNumberUser!:number;
   constructor(private client: ClientService, private fb: FormBuilder, private router: Router) { }
 
   
   ngOnInit(): void {
-    
+    this.consultCities();
     //this.inputFormControl.enable();
     //this.inputFormControl.setValue(1234);
     //creamos nuestro formulario  tan pronto cargue nuestro componente a partir de los controles que en el HTML llamamos "cedula" y "nombre", etc
@@ -27,24 +28,40 @@ export class UpdateDataComponent implements OnInit {
     //se configuran los valores iniciales de cada input y las validaciones correspondientes
     this.form = this.fb.group({
       identificationNumber: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
-      fullName: ['123', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
+      fullName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       email: ['', [Validators.required, Validators.email]],
       //password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
       cityCode: [''],
       //cityCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(6)]],
     });
-
     this.showData()
+    this.consultCities();
   }
+  consultCities(){
+    this.client.getRequestConsultCities("http://localhost:10101/consultCities").subscribe(
+      //cuando la respuesta del server llega es emitida por el observable mediante next()..
+      (response: any) => {
+        this.cities = response.cities;
+        console.log(response);
+    },
+    //si ocurre un error en el proceso de envío del formulario...
+    (error) => {
+      console.log(error.status);8
+      }
+    )
+  }
+
 
   showData(){
     this.client.getRequestData("http://localhost:10101/consultUser").subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
       (response: any) => {
-      //  this.documents = response.documents;
-          console.log(response);
+        this.identificationNumberUser=response.user.identificationNumber
+          this.form.controls.identificationNumber.setValue(response.user.identificationNumber);      
           this.form.controls.fullName.setValue(response.user.fullName);
-          this.form.controls.email.setValue(response.user.email);    
+          this.form.controls.email.setValue(response.user.email);
+          this.form.controls.cityCode.setValue(response.user.cityCode);
+              
     },
     //si ocurre un error en el proceso de envío del formulario...
     (error) => {
@@ -64,11 +81,11 @@ export class UpdateDataComponent implements OnInit {
       //se envian los datos del formulario mediante una solicitud POST, los valores de los inputs del formulario 
       //se recogen usando los controles "email" y "password" para formar el json a enviar..
       this.client.updateRequestUpdateData('http://localhost:10101/updateData', {
-        identificationNumber: this.form.value.identificationNumber,
+        identificationNumber: this.identificationNumberUser,
         fullName: this.form.value.fullName,
         email: this.form.value.email,
         //password: this.form.value.password,
-        cityCode: "63001",
+        cityCode: this.form.value.cityCode,
         state:false
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
