@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ClientService } from '../../client.service';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '../../components/login/login.component'
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-data',
@@ -9,18 +13,17 @@ import { ClientService } from '../../client.service';
   styleUrls: ['./update-data.component.css']
 })
 export class UpdateDataComponent implements OnInit {
-  
+
   spinner: boolean = false;
   form!: FormGroup;
   cities!: Array<any>;
   inputFormControl = new FormControl({ value: 12345, disabled: false });
-  fullName!:string;
-  identificationNumberUser!:number;
-  constructor(private client: ClientService, private fb: FormBuilder, private router: Router) { }
+  fullName!: string;
+  identificationNumberUser!: number;
+  constructor(private client: ClientService, private fb: FormBuilder, private router: Router, private dialog: MatDialog) { }
 
-  
+
   ngOnInit(): void {
-    this.consultCities();
     //this.inputFormControl.enable();
     //this.inputFormControl.setValue(1234);
     //creamos nuestro formulario  tan pronto cargue nuestro componente a partir de los controles que en el HTML llamamos "cedula" y "nombre", etc
@@ -34,45 +37,50 @@ export class UpdateDataComponent implements OnInit {
       cityCode: [''],
       //cityCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(6)]],
     });
-    this.showData()
     this.consultCities();
+    this.showData()
   }
-  consultCities(){
+  consultCities() {
     this.client.getRequestConsultCities("http://localhost:10101/consultCities").subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
       (response: any) => {
         this.cities = response.cities;
         console.log(response);
-    },
-    //si ocurre un error en el proceso de envío del formulario...
-    (error) => {
-      console.log(error.status);8
+      },
+      //si ocurre un error en el proceso de envío del formulario...
+      (error) => {
+        console.log(error.status);
       }
     )
   }
 
-
-  showData(){
+  showData() {
     this.client.getRequestData("http://localhost:10101/consultUser").subscribe(
       //cuando la respuesta del server llega es emitida por el observable mediante next()..
       (response: any) => {
-        this.identificationNumberUser=response.user.identificationNumber
-          this.form.controls.identificationNumber.setValue(response.user.identificationNumber);      
-          this.form.controls.fullName.setValue(response.user.fullName);
-          this.form.controls.email.setValue(response.user.email);
-          this.form.controls.cityCode.setValue(response.user.cityCode);
-              
-    },
-    //si ocurre un error en el proceso de envío del formulario...
-    (error) => {
-      this.router.navigate( ['/']);
-      //this.dialog.open(LoginComponent);
-      //se imprime el status del error
-      console.log(error.status);
+        this.identificationNumberUser = response.user.identificationNumber
+        this.form.controls.identificationNumber.setValue(response.user.identificationNumber);
+        this.form.controls.fullName.setValue(response.user.fullName);
+        this.form.controls.email.setValue(response.user.email);
+        this.form.controls.cityCode.setValue(response.user.cityCode);
+
+      },
+      //si ocurre un error en el proceso de envío del formulario...
+      (error) => {
+        this.router.navigate(['/']);
+        this.dialog.open(LoginComponent);
+        Swal.fire({
+          icon: 'warning',
+          title: 'Página no permitida',
+          text: 'Por favor inicie sesión',
+          background: '#fff',
+          confirmButtonColor: '#045b62'
+        });
+        //se imprime el status del error
+        console.log(error.status);
       }
     )
   }
-
 
   onSubmit() {
     //si la validacion del formulario es exitosa...
@@ -86,7 +94,7 @@ export class UpdateDataComponent implements OnInit {
         email: this.form.value.email,
         //password: this.form.value.password,
         cityCode: this.form.value.cityCode,
-        state:false
+        state: false
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
         (response: any) => {
@@ -108,5 +116,3 @@ export class UpdateDataComponent implements OnInit {
     }
   }
 }
-
-
