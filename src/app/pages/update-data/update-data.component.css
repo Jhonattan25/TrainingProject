@@ -1,0 +1,28 @@
+.upgradeCard{
+    min-height: 69vh;
+    width: 50%;
+    margin: 30px auto;
+}
+
+.elementsCard{
+   text-align:  center;
+}
+
+.example-full-width{
+    width: 80%;
+}
+
+.buttonsUpgrade{
+    width: 80%;
+    margin: 0 auto;
+}
+
+.buttonsUpgrade .btn{
+    width: 100%;
+    color: #4974a5;
+    border-color: #00000036;
+}
+
+.buttonsRegister .spinner-border{
+    animation-duration: 0.75s;
+}

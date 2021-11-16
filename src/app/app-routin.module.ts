@@ -7,6 +7,7 @@ import { ReportFoundComponent } from "./pages/report-found/report-found.componen
 import { ReportLostComponent } from "./pages/report-lost/report-lost.component";
 import { RegisterComponent } from "./pages/register/register.component";
 import { ActivationComponent } from "./pages/activation/activation.component";
+import { UpdateDataComponent } from "./pages/update-data/update-data.component";
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
     {path: 'consultFound', component: ConsultFoundComponent},
     {path: 'register', component: RegisterComponent},
     {path: 'activation', component:ActivationComponent },
+    {path: 'updateData', component:UpdateDataComponent },
     {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
