@@ -4,6 +4,8 @@ import { ClientService } from '../../client.service';
 import { LoginComponent } from '../../components/login/login.component'
 import { MatDialog } from '@angular/material/dialog';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-consult-lost',
   templateUrl: './consult-lost.component.html',
@@ -29,6 +31,13 @@ export class ConsultLostComponent implements OnInit {
     (error) => {
       this.router.navigate( ['/']);
       this.dialog.open(LoginComponent);
+      Swal.fire({
+        icon: 'warning',
+        title: 'Página no permitida',
+        text: 'Por favor inicie sesión',
+        background: '#fff',
+        confirmButtonColor: '#045b62'
+      });
       //se imprime el status del error
       console.log(error.status);
       }
