@@ -1,24 +1,68 @@
 <mat-card class="formCard">
     <div class="elementsformCard">
         <h1>{{title}}</h1>
-        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="forms-repeat" >
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" class="forms-repeat">
             <div class="inputsforms">
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Número Documento</mat-label>
-                    <input matInput type="number" formControlName="documentNumber">
-                </mat-form-field>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Nombre Completo</mat-label>
-                    <input matInput type="text" formControlName="fullName">
-                </mat-form-field>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Correo Electrónico</mat-label>
-                    <input matInput type="email" formControlName="email">
-                </mat-form-field>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Fecha</mat-label>
-                    <input matInput type="date" formControlName="date">
-                </mat-form-field>
+                <div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Número Documento</mat-label>
+                        <input matInput type="number" formControlName="documentNumber">
+                    </mat-form-field>
+                    <div class="alert-danger"
+                        *ngIf="form.get('documentNumber')?.errors && form.get('documentNumber')?.dirty">
+                        <div class="container-error-message" *ngIf="form.get('documentNumber')?.hasError('required')">
+                            El campo documento es requerido
+                        </div>
+                        <div class="container-error-message" *ngIf="form.get('documentNumber')?.hasError('min')">
+                            El campo documento debe contener mínimo 8 caracteres
+                        </div>
+                        <div class="container-error-message" *ngIf="form.get('documentNumber')?.hasError('max')">
+                            El campo documento debe contener máximo 10 caracteres
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Nombre Completo</mat-label>
+                        <input matInput type="text" formControlName="fullName">
+                    </mat-form-field>
+                    <div class="alert-danger" *ngIf="form.get('fullName')?.errors && form.get('fullName')?.dirty">
+                        <div class="container-error-message" *ngIf="form.get('fullName')?.hasError('required')">
+                            El campo nombre es requerido
+                        </div>
+                        <div class="container-error-message" *ngIf="form.get('fullName')?.hasError('minlength')">
+                            El campo nombre debe contener al menos un caracter
+                        </div>
+                        <div class="container-error-message" *ngIf="form.get('fullName')?.hasError('maxlength')">
+                            El campo nombre debe contener maximo 100 caracteres
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Correo Electrónico</mat-label>
+                        <input matInput type="email" formControlName="email">
+                    </mat-form-field>
+                    <div class="alert-danger" *ngIf="form.get('email')?.errors && form.get('email')?.dirty">
+                        <div class="container-error-message" *ngIf="form.get('email')?.hasError('required')">
+                            El campo email es requerido
+                        </div>
+                        <div class="container-error-message" *ngIf="form.get('email')?.hasError('email')">
+                            El campo debe ser de tipo email (Ej:nombre@gmail.com)
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Fecha</mat-label>
+                        <input matInput type="date" formControlName="date">
+                    </mat-form-field>
+                    <div class="alert-danger" *ngIf="form.get('date')?.errors && form.get('email')?.dirty">
+                        <div class="container-error-message" *ngIf="form.get('date')?.hasError('required')">
+                            El campo fecha es requerido
+                        </div>
+                    </div>
+                </div>
             </div>
             <section class="example-section">
                 <p>Tipo Documentos </p>
@@ -31,19 +75,29 @@
                     <mat-checkbox color="primary" class="example-margin">Otros</mat-checkbox>
                 </div>
             </section>
-            <div class="images-form">
-                <p>Imágenes</p> 
-                <input (change)="captureImage($event)" type="file" name="name"><br>
+            <div>
+                <div class="images-form">
+                    <p>Imágenes</p>
+                    <input (change)="captureImage($event)" type="file" name="name"><br>
+                </div>
+                <div *ngIf="preview">
+                    <img width="200px" [src]="preview" alt="Imagen subida">
+                </div>
             </div>
-            <div *ngIf="preview">
-                <img width="200px" [src]="preview" alt="Imagen subida">
-            </div>
-            <div class="description-form">
-                <p>Descripción </p>
-                <textarea name="descripcion" rows="10" cols="40" formControlName="description"></textarea>
+            <div>
+                <div class="description-form">
+                    <p>Descripción </p>
+                    <textarea name="description" rows="10" cols="40" formControlName="description"></textarea>
+                </div>
+                <div class="alert-danger" *ngIf="form.get('description')?.errors">
+                    <div class="container-error-message" *ngIf="form.get('description')?.hasError('maxlength')">
+                        El campo descripción debe contener maximo 1000 caracteres
+                    </div>
+                </div>
             </div>
             <div class="buttonsReport">
-                <button *ngIf="!spinner" type="submit" class="btnEnterLogin btn" mat-stroked-button color="primary">Reportar</button>
+                <button *ngIf="!spinner" type="submit" class="btnEnterLogin btn" mat-stroked-button color="primary"
+                    [disabled]="!form.valid">Reportar</button>
 
                 <button *ngIf="spinner" class="btn" mat-stroked-button>
                     <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>

@@ -17,3 +17,16 @@
      color: #4974a5;
      border-color: #00000036;
  }
+
+ .alert-danger{
+    color: #721c24;
+    background: #f8d7da;
+    border-color: #f5c6cb;
+    width: 80%;
+    margin: 5px auto;
+}
+
+.container-error-message{
+    padding: 2px; 
+    text-align: start;
+}

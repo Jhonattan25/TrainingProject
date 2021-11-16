@@ -1,5 +1,5 @@
 <div class="elementsCard">
-    <h1 mat-dialog-title>Iniciar Sesión</h1>
+    <h1 mat-dialog-title>Iniciar sesión</h1>
     <div mat-dialog-content>
         <form [formGroup]="form" class="loginForm" (ngSubmit)="onSubmit()">
             <div class="inputsLogin">
@@ -7,10 +7,34 @@
                     <mat-label>Numero de documento</mat-label>
                     <input matInput placeholder="Ingresar numero de documento" formControlName="identificationNumber">
                 </mat-form-field>
+                <!-- <div class="alert-danger"
+                    *ngIf="form.get('identificationNumber')?.errors && (form.get('identificationNumber')?.dirty || form.get('identificationNumber')?.touched)">
+                    <div class="container-error-message" *ngIf="form.get('identificationNumber')?.hasError('required')">
+                        El campo documento es requerido
+                    </div>
+                    <div class="container-error-message" *ngIf="form.get('identificationNumber')?.hasError('min')">
+                        El campo documento debe contener mínimo 8 caracteres
+                    </div>
+                    <div class="container-error-message" *ngIf="form.get('identificationNumber')?.hasError('max')">
+                        El campo documento debe contener máximo 10 caracteres
+                    </div>
+                </div> -->
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Contraseña</mat-label>
                     <input matInput placeholder="Ingresar contraseña" type="password" formControlName="password">
                 </mat-form-field>
+               <!--  <div class="alert-danger"
+                    *ngIf="form.get('password')?.errors && (form.get('password')?.dirty || form.get('password')?.touched)">
+                    <div class="container-error-message" *ngIf="form.get('password')?.hasError('required')">
+                        El campo contraseña es requerido
+                    </div>
+                    <div class="container-error-message" *ngIf="form.get('password')?.hasError('minlength')">
+                        El campo contraseña debe contener mínimo 8 caracteres
+                    </div>
+                    <div class="container-error-message" *ngIf="form.get('password')?.hasError('maxlength')">
+                        El campo contraseña debe contener máximo 15 caracteres
+                    </div>
+                </div> -->
             </div>
             <div class="buttonsLogin">
                 <button *ngIf="!spinner" class="btnEnterLogin btn" mat-stroked-button type="submit">Ingresar</button>
@@ -19,7 +43,8 @@
                     <span class="sr-only"></span>
                 </button>
 
-                <button class="btnEnterRegister btn" type="button" mat-stroked-button (click)="showRegister()">Registrar</button>
+                <button class="btnEnterRegister btn" type="button" mat-stroked-button
+                    (click)="showRegister()">Registrar</button>
             </div>
         </form>
     </div>

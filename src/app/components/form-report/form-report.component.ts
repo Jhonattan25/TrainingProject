@@ -5,6 +5,8 @@ import { ClientService } from '../../client.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-form-report',
   templateUrl: './form-report.component.html',
@@ -30,7 +32,7 @@ export class FormReportComponent implements OnInit {
     //estos controles se encuentran en cada input del formulario formControlName="numdocumento" y formControlName="nombrecompleto" 
     //se configuran los valores iniciales de cada input y las validaciones correspondientes
     this.form = this.fb.group({
-      documentNumber: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
+      documentNumber: ['', [Validators.required, Validators.min(10000000), Validators.max(9999999999)]],
       fullName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       email: ['', [Validators.required, Validators.email]],
       date: ['', Validators.required],
@@ -102,6 +104,13 @@ export class FormReportComponent implements OnInit {
           this.spinner = false;
           //se imprime la respuesta del server
           console.log(response);
+          this.router.navigate(['/']);
+          Swal.fire({
+            icon: 'success',
+            title: 'Reporte exitoso',
+            background: '#fff',
+            confirmButtonColor: '#045b62'
+          });
         },
         //si ocurre un error en el proceso de envío del formulario...
         (error) => {

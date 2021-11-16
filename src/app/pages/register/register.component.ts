@@ -78,14 +78,14 @@ export class RegisterComponent implements OnInit {
           console.log(response);
           this.spinner = false;
           this.router.navigate(['/']);
-          const dialogRef = this.dialog.open(LoginComponent);
+          this.dialog.open(LoginComponent);
           Swal.fire({
             icon: 'success',
             title: 'Registro exitoso',
             text: 'Por favor verifique su correo eléctronico, para validar la cuenta',
             background: '#fff',
             confirmButtonColor: '#045b62'
-          })
+          });
         },
         //si ocurre un error en el proceso de envío del formulario...
         (error) => {
