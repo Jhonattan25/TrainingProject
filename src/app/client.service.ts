@@ -15,7 +15,7 @@ export class ClientService {
     }
 
     const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
-    config["header"] = header;
+    config["headers"] = header;
 
     //Notese que como tercer parametro se pasa la configuracion de la request
     return this.http.put(route, config);
@@ -43,7 +43,18 @@ export class ClientService {
     }
 
     const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
-    config["header"] = header;
+    config["headers"] = header;
+    //Notese que como tercer parametro se pasa la configuracion de la request
+    return this.http.post(route, data, config);
+  }
+
+  postRequestAddDocuments(route: string, data: any) {
+    let config: any = {
+      responseType: "json"
+    }
+
+    const header = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    config["headers"] = header;
     //Notese que como tercer parametro se pasa la configuracion de la request
     return this.http.post(route, data, config);
   }
@@ -56,7 +67,7 @@ export class ClientService {
     }
 
     const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
-    config["header"] = header;
+    config["headers"] = header;
     //Notese que como tercer parametro se pasa la configuracion de la request
     return this.http.post(route, data, config);
   }

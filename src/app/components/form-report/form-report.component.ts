@@ -40,16 +40,16 @@ export class FormReportComponent implements OnInit {
     });
   }
 
-  captureImage(e:any): any{
+  captureImage(e: any): any {
     const capturedImage = e.target.files[0];
-    this.extractBase64(capturedImage).then((image:any) => {
+    this.extractBase64(capturedImage).then((image: any) => {
       this.preview = image.base;
     });
     this.images.push(capturedImage);
   }
 
-  extractBase64 = async ($event:any) => new Promise((resolve, reject)=>{
-    try{
+  extractBase64 = async ($event: any) => new Promise((resolve, reject) => {
+    try {
       const reader = new FileReader();
       reader.readAsDataURL($event);
       reader.onload = () => {
@@ -57,13 +57,13 @@ export class FormReportComponent implements OnInit {
           base: reader.result
         });
       };
-      reader.onerror = error =>{
+      reader.onerror = error => {
         resolve({
           base: null
         });
       };
-    }catch(error){
-     reject(error);
+    } catch (error) {
+      reject(error);
     }
   });
 
@@ -71,23 +71,23 @@ export class FormReportComponent implements OnInit {
   //que se encuentra referenciado en el form del HTML
   onSubmit() {
     const formData = new FormData();
-    this.images.forEach((element:any) => {
+    this.images.forEach((element: any) => {
       formData.append('files', element);
     });
 
     console.log(formData);
-    
+
     //si la validacion del formulario es exitosa...
     if (this.form.valid) {
       this.spinner = true;
-      
+
       let category: number = 1;
       if (this.title === 'Reportar documentos encontrados') {
         category = 0;
       }
       //se envian los datos del formulario mediante una solicitud POST, los valores de los inputs del formulario 
       //se recogen usando los controles "email" y "password" para formar el json a enviar..
-      this.client.postRequestSendForm('http://localhost:10101/addDocuments', {
+      this.client.postRequestAddDocuments('http://localhost:10101/addDocuments', {
         documentNumber: this.form.value.documentNumber,
         fullName: this.form.value.fullName,
         email: this.form.value.email,
@@ -95,7 +95,6 @@ export class FormReportComponent implements OnInit {
         date: this.form.value.date,
         state: 1,
         category: category,
-        //identificationNumber: "12345",
         cityCode: "63001",
         //image: formData
       }).subscribe(
