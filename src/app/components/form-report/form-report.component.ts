@@ -15,7 +15,7 @@ import Swal from 'sweetalert2';
 export class FormReportComponent implements OnInit {
 
   spinner: boolean = false;
-
+  cities!: Array<any>;
   //grupo de controles de nuestro formulario
   form!: FormGroup;
   images: any = [];
@@ -28,6 +28,8 @@ export class FormReportComponent implements OnInit {
 
   //en ngOnInit() metemos todas las instrucciones que queremos que se ejecuten apenas se cree nuestro componente
   ngOnInit(): void {
+    this.consultCities();
+
     //creamos nuestro formulario  tan pronto cargue nuestro componente a partir de los controles que en el HTML llamamos "numdocumento" y "nombrecompleto", etc
     //estos controles se encuentran en cada input del formulario formControlName="numdocumento" y formControlName="nombrecompleto" 
     //se configuran los valores iniciales de cada input y las validaciones correspondientes
@@ -35,9 +37,23 @@ export class FormReportComponent implements OnInit {
       documentNumber: ['', [Validators.required, Validators.min(10000000), Validators.max(9999999999)]],
       fullName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       email: ['', [Validators.required, Validators.email]],
-      date: ['', Validators.required],
+      cityCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(6)]],
       description: ['', Validators.maxLength(1000)]
     });
+  }
+
+  consultCities() {
+    this.client.getRequestConsultCities("http://localhost:10101/consultCities").subscribe(
+      //cuando la respuesta del server llega es emitida por el observable mediante next()..
+      (response: any) => {
+        this.cities = response.cities;
+        console.log(response);
+      },
+      //si ocurre un error en el proceso de envío del formulario...
+      (error) => {
+        console.log(error.status);
+      }
+    )
   }
 
   captureImage(e: any): any {
@@ -92,10 +108,8 @@ export class FormReportComponent implements OnInit {
         fullName: this.form.value.fullName,
         email: this.form.value.email,
         description: this.form.value.description,
-        date: this.form.value.date,
-        state: 1,
         category: category,
-        cityCode: "63001",
+        cityCode: this.form.value.cityCode,
         //image: formData
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..

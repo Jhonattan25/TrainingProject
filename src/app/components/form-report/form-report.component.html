@@ -5,7 +5,7 @@
             <div class="inputsforms">
                 <div>
                     <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Número Documento</mat-label>
+                        <mat-label>Número de identificación del documento</mat-label>
                         <input matInput type="number" formControlName="documentNumber">
                     </mat-form-field>
                     <div class="alert-danger"
@@ -23,7 +23,7 @@
                 </div>
                 <div>
                     <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Nombre Completo</mat-label>
+                        <mat-label>Nombre completo del documento</mat-label>
                         <input matInput type="text" formControlName="fullName">
                     </mat-form-field>
                     <div class="alert-danger" *ngIf="form.get('fullName')?.errors && form.get('fullName')?.dirty">
@@ -40,7 +40,7 @@
                 </div>
                 <div>
                     <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Correo Electrónico</mat-label>
+                        <mat-label>Correo electrónico</mat-label>
                         <input matInput type="email" formControlName="email">
                     </mat-form-field>
                     <div class="alert-danger" *ngIf="form.get('email')?.errors && form.get('email')?.dirty">
@@ -54,30 +54,35 @@
                 </div>
                 <div>
                     <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Fecha</mat-label>
-                        <input matInput type="date" formControlName="date">
+                        <mat-label>Ciudad</mat-label>
+                        <mat-select formControlName="cityCode">
+                            <mat-option *ngFor="let city of cities" [value]="city.code">
+                                {{city.name}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
-                    <div class="alert-danger" *ngIf="form.get('date')?.errors && form.get('email')?.dirty">
-                        <div class="container-error-message" *ngIf="form.get('date')?.hasError('required')">
-                            El campo fecha es requerido
+                    <div class="alert-danger"
+                        *ngIf="form.get('cityCode')?.errors && (form.get('cityCode')?.dirty || form.get('cityCode')?.touched)">
+                        <div class="container-error-message" *ngIf="form.get('cityCode')?.hasError('required')">
+                            El campo ciudad es requerido
                         </div>
                     </div>
                 </div>
             </div>
             <section class="example-section">
-                <p>Tipo Documentos </p>
+                <p>Documentos encontrados</p>
                 <div class="options-form">
                     <mat-checkbox color="primary" class="example-margin">Cédula</mat-checkbox>
                     <mat-checkbox color="primary" class="example-margin">Carnet</mat-checkbox>
-                    <mat-checkbox color="primary" class="example-margin">Licencia Conducción</mat-checkbox>
-                    <mat-checkbox color="primary" class="example-margin">Tarjeta Crédito</mat-checkbox>
-                    <mat-checkbox color="primary" class="example-margin">Libreta Militar</mat-checkbox>
+                    <mat-checkbox color="primary" class="example-margin">Licencia conducción</mat-checkbox>
+                    <mat-checkbox color="primary" class="example-margin">Tarjeta crédito</mat-checkbox>
+                    <mat-checkbox color="primary" class="example-margin">Libreta militar</mat-checkbox>
                     <mat-checkbox color="primary" class="example-margin">Otros</mat-checkbox>
                 </div>
             </section>
             <div>
                 <div class="images-form">
-                    <p>Imágenes</p>
+                    <p>Imágen del documento</p>
                     <input (change)="captureImage($event)" type="file" name="name"><br>
                 </div>
                 <div *ngIf="preview">
@@ -86,7 +91,7 @@
             </div>
             <div>
                 <div class="description-form">
-                    <p>Descripción </p>
+                    <p>Descripción (opcional)</p>
                     <textarea name="description" rows="10" cols="40" formControlName="description"></textarea>
                 </div>
                 <div class="alert-danger" *ngIf="form.get('description')?.errors">
