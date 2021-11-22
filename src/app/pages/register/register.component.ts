@@ -10,8 +10,6 @@ import { MatDialog } from '@angular/material/dialog';
 
 import Swal from 'sweetalert2';
 
-
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
