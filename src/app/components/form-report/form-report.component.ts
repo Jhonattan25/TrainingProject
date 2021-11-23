@@ -58,6 +58,20 @@ export class FormReportComponent implements OnInit {
     )
   }
 
+  consultDocumentsTypes() {
+    this.client.getRequestConsultDocumentTypes("http://localhost:10101/consultDocumentType").subscribe(
+      //cuando la respuesta del server llega es emitida por el observable mediante next()..
+      (response: any) => {
+        this.documentType = response.documentType;
+        console.log("Respuesta", response.documentType);
+      },
+      //si ocurre un error en el proceso de envío del formulario...
+      (error) => {
+        console.log(error.status);
+      }
+    )
+  }
+
   captureImage(e: any): any {
     const capturedImage = e.target.files[0];
     this.extractBase64(capturedImage).then((image: any) => {
@@ -93,8 +107,6 @@ export class FormReportComponent implements OnInit {
       formData.append('files', element);
     });
 
-    console.log(formData);
-
     //si la validacion del formulario es exitosa...
     if (this.form.valid) {
       this.spinner = true;
@@ -119,6 +131,9 @@ export class FormReportComponent implements OnInit {
           this.spinner = false;
           //se imprime la respuesta del server
           console.log(response);
+          formData.append('id', response.id);
+          this.uploadImage(formData);
+
           this.router.navigate(['/']);
           Swal.fire({
             icon: 'success',
@@ -139,17 +154,12 @@ export class FormReportComponent implements OnInit {
     }
   }
 
-  consultDocumentsTypes() {
-    this.client.getRequestConsultDocumentTypes("http://localhost:10101/consultDocumentType").subscribe(
-      //cuando la respuesta del server llega es emitida por el observable mediante next()..
+  uploadImage(data: any) {
+    this.client.postRequestSendForm('http://localhost:10150/images/upload', data).subscribe(
       (response: any) => {
-        this.documentType = response.documentType;
-        console.log("Respuesta" , response.documentType);     
       },
-      //si ocurre un error en el proceso de envío del formulario...
       (error) => {
         console.log(error.status);
-      }
-    )
+      })
   }
 }

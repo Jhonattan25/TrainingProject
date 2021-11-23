@@ -72,6 +72,17 @@ export class ClientService {
     return this.http.post(route, data, config);
   }
 
+  postRequestUploadImage(route: string, data: any) {
+    let config: any = {
+      responseType: "json"
+    }
+
+    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
+    config["headers"] = header;
+    //Notese que como tercer parametro se pasa la configuracion de la request
+    return this.http.post(route, data, config);
+  }
+
   //metodo que recibe como parametro una url un json a ser enviado. Esta solicitud se hace con metodo POST
   //en este caso el json proviene de los datos de un formulario.
   postRequestLogin(route: string, data: any) {
@@ -120,7 +131,7 @@ export class ClientService {
     //esto se puede ver en la linea 83 de ejemplos.component.ts
     //Notese que como segundo parametro se pasa la configuracion de la request
 
-    return this.http.put(route,data, config);
+    return this.http.put(route, data, config);
   }
 
   getRequestData(route: string) {
@@ -144,8 +155,8 @@ export class ClientService {
   }
 
   getRequestConsultDocument(route: string) {
-     //configuracion del tipo de respuesta esperado
-     let config: any = {
+    //configuracion del tipo de respuesta esperado
+    let config: any = {
       responseType: "json"
     }
 

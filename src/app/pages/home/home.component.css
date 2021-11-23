@@ -5,6 +5,7 @@
 .content {
   min-height: 69vh;
   padding-top: 60px;
+  background-color: #F5F5F5;
 }
 
 .content .contentTitle {
@@ -38,6 +39,7 @@
   border: none;
   font-size: 18px;
   outline: none;
+  background-color: #F5F5F5;
 }
 
 .content .contentInput:hover {
@@ -111,13 +113,14 @@ img {
 
 .contentCard{
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   padding: 0 10%;
   flex-wrap: wrap;
 }
 
 .documentCard {
   max-width: 400px;
+  margin-bottom: 50px;
 }
 
 .documentCard .documentCardHeader{
@@ -126,7 +129,7 @@ img {
 
 .documentCard img {
   width: 100%;
-  max-height: 300px;
+  max-height: 250px;
   margin-bottom: 10px;
 }
 

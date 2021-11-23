@@ -21,7 +21,6 @@ export class HomeComponent implements OnInit {
   mail: string = "hola@gmail.com"
 
   consultDocument(category: number) {
-
     if (!this.documentNumber.errors) {
       this.client.getRequestConsultDocument(`http://localhost:10101/consultDocument/?category=${category}&documentNumber=${this.documentNumber.value}`).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
