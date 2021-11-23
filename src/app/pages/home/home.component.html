@@ -6,17 +6,17 @@
     <mat-icon>search</mat-icon>
     <input type="text" placeholder="Buscar documento: digite el número de documento" [formControl]="documentNumber">
   </div>
-  <div *ngIf="(documentNumber.errors && documentNumber.dirty) || showWarning" class="warning" >
+  <div *ngIf="(documentNumber.errors && documentNumber.dirty) || showWarning" class="warning">
     <span *ngIf="showWarning && !documentNumber.errors">— No se encontró ningún documento —</span>
-    <span *ngIf="documentNumber.hasError('required')" >Este campo es requerido</span>
-    <span *ngIf="documentNumber.hasError('minlength')" >Este campo debe tener mínimo 8 caracteres</span>
-    <span *ngIf="documentNumber.hasError('maxlength')" >Este campo debe tener máximo 10 caracteres</span>
+    <span *ngIf="documentNumber.hasError('required')">Este campo es requerido</span>
+    <span *ngIf="documentNumber.hasError('minlength')">Este campo debe tener mínimo 8 caracteres</span>
+    <span *ngIf="documentNumber.hasError('maxlength')">Este campo debe tener máximo 10 caracteres</span>
   </div>
   <div class="contentButtons">
-    <button class="contentButtonsLost btn" mat-stroked-button color="primary"
-      (click)="consultDocument(1)">Documento perdido</button>
-    <button class="contentButtonsFound btn" mat-stroked-button color="primary"
-      (click)="consultDocument(0)">Documento encontrado</button>
+    <button class="contentButtonsLost btn" mat-stroked-button color="primary" (click)="consultDocument(1)">Documento
+      perdido</button>
+    <button class="contentButtonsFound btn" mat-stroked-button color="primary" (click)="consultDocument(0)">Documento
+      encontrado</button>
   </div>
   <div *ngIf="!showDocuments" class="contentImgs">
     <div class="imgLost contentImg">
@@ -111,6 +111,7 @@
       </div>
       <img src="http://localhost:10150/images/consult/?documentReportId={{element.id}}" alt="Photo of a Shiba Inu">
       <mat-card-content>
+        <p><b>Ciudad: </b>{{element.cityName}}</p>
         <p><b>Correo de contacto: </b>{{element.email}}</p>
         <h4>Descripción</h4>
         <p>
@@ -119,6 +120,7 @@
           A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
           bred for hunting.
         </p>
+        <p><b>Fecha de reporte: </b>{{element.date}}</p>
       </mat-card-content>
     </mat-card>
   </div>

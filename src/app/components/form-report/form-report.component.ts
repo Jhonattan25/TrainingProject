@@ -91,8 +91,6 @@ export class FormReportComponent implements OnInit {
       formData.append('files', element);
     });
 
-    console.log(formData);
-
     //si la validacion del formulario es exitosa...
     if (this.form.valid) {
       this.spinner = true;
@@ -117,6 +115,9 @@ export class FormReportComponent implements OnInit {
           this.spinner = false;
           //se imprime la respuesta del server
           console.log(response);
+          formData.append('id', response.id);
+          this.uploadImage(formData);
+
           this.router.navigate(['/']);
           Swal.fire({
             icon: 'success',
@@ -135,5 +136,14 @@ export class FormReportComponent implements OnInit {
     } else {
       console.log("Form error");
     }
+  }
+
+  uploadImage(data: any) {
+    this.client.postRequestSendForm('http://localhost:10150/images/upload', data).subscribe(
+      (response: any) => {
+      },
+      (error) => {
+        console.log(error.status);
+      })
   }
 }
