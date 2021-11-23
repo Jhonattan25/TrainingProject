@@ -20,6 +20,7 @@ export class FormReportComponent implements OnInit {
   form!: FormGroup;
   images: any = [];
   preview!: string;
+  documentType!: Array<any>;
 
   @Input() title: any;
 
@@ -29,6 +30,7 @@ export class FormReportComponent implements OnInit {
   //en ngOnInit() metemos todas las instrucciones que queremos que se ejecuten apenas se cree nuestro componente
   ngOnInit(): void {
     this.consultCities();
+    this.consultDocumentsTypes();
 
     //creamos nuestro formulario  tan pronto cargue nuestro componente a partir de los controles que en el HTML llamamos "numdocumento" y "nombrecompleto", etc
     //estos controles se encuentran en cada input del formulario formControlName="numdocumento" y formControlName="nombrecompleto" 
@@ -48,6 +50,20 @@ export class FormReportComponent implements OnInit {
       (response: any) => {
         this.cities = response.cities;
         console.log(response);
+      },
+      //si ocurre un error en el proceso de envío del formulario...
+      (error) => {
+        console.log(error.status);
+      }
+    )
+  }
+
+  consultDocumentsTypes() {
+    this.client.getRequestConsultDocumentTypes("http://localhost:10101/consultDocumentType").subscribe(
+      //cuando la respuesta del server llega es emitida por el observable mediante next()..
+      (response: any) => {
+        this.documentType = response.documentType;
+        console.log("Respuesta", response.documentType);
       },
       //si ocurre un error en el proceso de envío del formulario...
       (error) => {
