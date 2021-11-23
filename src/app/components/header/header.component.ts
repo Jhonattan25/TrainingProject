@@ -10,6 +10,8 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class HeaderComponent implements OnInit {
 
+  login:boolean = localStorage.getItem('token')?true:false;
+
   constructor(private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -29,5 +31,23 @@ export class HeaderComponent implements OnInit {
 
   showLogin(){
     const dialogRef = this.dialog.open(LoginComponent);
+  }
+
+  showDocumentsLost(){
+    this.router.navigate(['/consultLost']);
+  }
+
+  showDocumentsFound(){
+    this.router.navigate(['/consultFound']);
+  }
+
+  showUpdateData(){
+    this.router.navigate(['/updateData']);
+  }
+
+  showSignOff(){
+    this.router.navigate(['/']);
+    localStorage.removeItem('token');
+    window.location.reload();
   }
 }
