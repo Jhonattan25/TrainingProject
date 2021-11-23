@@ -87,7 +87,6 @@ export class ClientService {
     //suscribirse a este observable para poder tener acceso al valor de descarga
     //esto se puede ver en la linea 83 de ejemplos.component.ts
     //Notese que como segundo parametro se pasa la configuracion de la request
-
     return this.http.get(route, config);
   }
 
