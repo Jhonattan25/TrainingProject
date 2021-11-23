@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
           //this.route.navigate( ['/ayuda']);
           this.router.navigate( ['/']);
           this.dialogRef.close();
+          window.location.reload();
       },
       //si ocurre un error en el proceso de envío del formulario...
       (error) => {
