@@ -5,6 +5,19 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ClientService {
+  
+  getRequestConsultDocumentTypes(route: string) {
+    //configuracion del tipo de respuesta esperado
+    let config: any = {
+      responseType: "json"
+    }
+
+    const header = new HttpHeaders().set('Authorization', '57ydf544ljka559ahjkfgd1');
+    config["headers"] = header;
+
+    //Notese que como tercer parametro se pasa la configuracion de la request
+    return this.http.get(route, config);
+  }
 
   //se inyecta el cliente http de Angular
   constructor(private http: HttpClient) { }
