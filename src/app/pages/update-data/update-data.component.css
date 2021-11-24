@@ -1,51 +1,50 @@
 .content {
-    min-height: 79vh;
-    background-color: #f5f5f5;
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-  
-
-.upgradeCard{
-    min-height: 69vh;
-    width: 50%;
-    margin: 0px auto;
+  min-height: 79vh;
+  background-color: #f5f5f5;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-input:disabled{
-    color: black;
-    background-color: #F5F5F5;
+.upgradeCard {
+  min-height: 69vh;
+  width: 50%;
+  margin: 0px auto;
+}
+
+input:disabled {
+  color: black;
+  background-color: #f5f5f5;
 }
 
 .buttonsUpdate {
-    display: flex;  
+  display: flex;
 }
 
-.elementsCard{
-   text-align:  center;
+.elementsCard {
+  text-align: center;
 }
 
-.example-full-width{
-    width: 80%;
+.example-full-width {
+  width: 80%;
 }
 
-.buttonsUpgrade{
-    width: 80%;
-    margin: 0 auto;
+.buttonsUpgrade {
+  width: 80%;
+  margin: 0 auto;
 }
 
-.buttonsUpgrade .btn{
-    width: 50%;
-    color: #4974a5;
-    border-color: #00000036;
+.buttonsUpgrade .btn {
+  width: 50%;
+  color: #4974a5;
+  border-color: #00000036;
 }
 
-.buttonsEdit .btn{
-    width: 50%;
-    color: #4974a5;
-    border-color: #00000036;
+.buttonsEdit .btn {
+  width: 50%;
+  color: #4974a5;
+  border-color: #00000036;
 }
 
-.buttonsRegister .spinner-border{
-    animation-duration: 0.75s;
+.buttonsRegister .spinner-border {
+  animation-duration: 0.75s;
 }

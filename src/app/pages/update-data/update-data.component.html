@@ -1,3 +1,4 @@
+<app-header></app-header>
 <section class="content">
     <mat-card class="upgradeCard">
         <div class="elementsCard">
@@ -40,7 +41,6 @@
                 <div class="buttonsUpdate">
                     <div class="buttonsUpgrade" *ngIf="edit">
                         <button *ngIf="!spinner" class="btn" mat-stroked-button type="submit">Actualizar</button>
-
                         <button *ngIf="spinner" class="btn" mat-stroked-button type="submit">
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             <span class="sr-only"> Actualizando...</span>
@@ -48,7 +48,6 @@
                     </div>
                     <div class="buttonsUpgrade" *ngIf="edit">
                         <button class="btn" mat-stroked-button (click)=cancel()>Cancelar</button>
-
                     </div>
                 </div>
             </form>
