@@ -59,6 +59,13 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', response.token);
           //recuperamos el valor de la porpiedad email guardada anteriormete y la imprimimos
           console.log(localStorage.getItem('token'));
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Bienvenido',
+            showConfirmButton: false,
+            timer: 1400
+          })
           //dirigimos al usuario a la ruta /ayuda
           //this.route.navigate( ['/ayuda']);
           this.router.navigate( ['/']);
