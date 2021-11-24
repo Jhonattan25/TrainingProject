@@ -1,36 +1,50 @@
 .content {
-    min-height: 79vh;
-    background-color: #f5f5f5;
-    padding-top: 30px;
-    padding-bottom: 30px;
-  }
-  
-
-.upgradeCard{
-    min-height: 69vh;
-    width: 50%;
-    margin: 0px auto;
+  min-height: 79vh;
+  background-color: #f5f5f5;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
-.elementsCard{
-   text-align:  center;
+.upgradeCard {
+  min-height: 69vh;
+  width: 50%;
+  margin: 0px auto;
 }
 
-.example-full-width{
-    width: 80%;
+input:disabled {
+  color: black;
+  background-color: #f5f5f5;
 }
 
-.buttonsUpgrade{
-    width: 80%;
-    margin: 0 auto;
+.buttonsUpdate {
+  display: flex;
 }
 
-.buttonsUpgrade .btn{
-    width: 100%;
-    color: #4974a5;
-    border-color: #00000036;
+.elementsCard {
+  text-align: center;
 }
 
-.buttonsRegister .spinner-border{
-    animation-duration: 0.75s;
+.example-full-width {
+  width: 80%;
+}
+
+.buttonsUpgrade {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.buttonsUpgrade .btn {
+  width: 50%;
+  color: #4974a5;
+  border-color: #00000036;
+}
+
+.buttonsEdit .btn {
+  width: 50%;
+  color: #4974a5;
+  border-color: #00000036;
+}
+
+.buttonsRegister .spinner-border {
+  animation-duration: 0.75s;
 }
