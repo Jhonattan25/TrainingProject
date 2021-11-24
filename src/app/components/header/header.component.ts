@@ -46,8 +46,7 @@ export class HeaderComponent implements OnInit {
   }
 
   showSignOff(){
-    this.router.navigate(['/']);
     localStorage.removeItem('token');
-    window.location.reload();
+    this.router.navigate(['/']);
   }
 }

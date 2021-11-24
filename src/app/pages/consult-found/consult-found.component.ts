@@ -29,6 +29,7 @@ export class ConsultFoundComponent implements OnInit {
     },
     //si ocurre un error en el proceso de envío del formulario...
     (error) => {
+      localStorage.removeItem('token');
       this.router.navigate( ['/']);
       this.dialog.open(LoginComponent);
       Swal.fire({
