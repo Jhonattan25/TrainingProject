@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
             icon: 'success',
             title: 'Bienvenido',
             showConfirmButton: false,
-            timer: 1200
+            timer: 1400
           })
           //dirigimos al usuario a la ruta /ayuda
           //this.route.navigate( ['/ayuda']);
