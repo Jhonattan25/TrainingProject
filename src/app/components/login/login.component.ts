@@ -6,6 +6,8 @@ import { ClientService } from '../../client.service';
 //importacion de clases necesarias para manejar formularios reactivos y el routing
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -71,6 +73,13 @@ export class LoginComponent implements OnInit {
     //si ocurrio un error en la validacion del formulario este no se enviara
     //y se imprimira el mensaje "Form error"
     } else {
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Email o contraseña incorrecta',
+        showConfirmButton: false,
+        timer: 1000
+      })
       console.log("Form error");
     }
   }
