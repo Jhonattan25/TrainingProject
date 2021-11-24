@@ -12,6 +12,15 @@
     margin: 0px auto;
 }
 
+input:disabled{
+    color: black;
+    background-color: #F5F5F5;
+}
+
+.buttonsUpdate {
+    display: flex;  
+}
+
 .elementsCard{
    text-align:  center;
 }
@@ -26,7 +35,13 @@
 }
 
 .buttonsUpgrade .btn{
-    width: 100%;
+    width: 50%;
+    color: #4974a5;
+    border-color: #00000036;
+}
+
+.buttonsEdit .btn{
+    width: 50%;
     color: #4974a5;
     border-color: #00000036;
 }

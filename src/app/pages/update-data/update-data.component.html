@@ -27,27 +27,29 @@
                     </mat-form-field> -->
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Ciudad</mat-label>
-                        <mat-select formControlName="cityCode">
+                        <mat-select  formControlName="cityCode">
                             <mat-option *ngFor="let city of cities" [value]="city.code" [disabled]="updade">
                                 {{city.name}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="buttonsUpgrade">
+                <div class="buttonsEdit">
                     <button *ngIf="!edit" class="btn" mat-stroked-button (click)="onEnable()">Editar</button>
                 </div>
-                <div class="buttonsUpgrade" *ngIf="edit">
-                    <button *ngIf="!spinner" class="btn" mat-stroked-button type="submit">Actualizar</button>
+                <div class="buttonsUpdate">
+                    <div class="buttonsUpgrade" *ngIf="edit">
+                        <button *ngIf="!spinner" class="btn" mat-stroked-button type="submit">Actualizar</button>
 
-                    <button *ngIf="spinner" class="btn" mat-stroked-button type="submit">
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        <span class="sr-only"> Actualizando...</span>
-                    </button>
-                </div>
-                <div class="buttonsUpgrade" *ngIf="edit">
-                    <button class="btn" mat-stroked-button (click)=cancel()>Cancelar</button>
+                        <button *ngIf="spinner" class="btn" mat-stroked-button type="submit">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            <span class="sr-only"> Actualizando...</span>
+                        </button>
+                    </div>
+                    <div class="buttonsUpgrade" *ngIf="edit">
+                        <button class="btn" mat-stroked-button (click)=cancel()>Cancelar</button>
 
+                    </div>
                 </div>
             </form>
         </div>
