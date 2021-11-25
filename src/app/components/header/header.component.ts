@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import {MatDialog} from '@angular/material/dialog';
+import {SecurityService} from '../../services/security.service'
 
 @Component({
   selector: 'app-header',
@@ -12,9 +13,16 @@ export class HeaderComponent implements OnInit {
 
   login:boolean = localStorage.getItem('token')?true:false;
 
-  constructor(private router: Router, public dialog: MatDialog) { }
+  constructor(private router: Router, private dialog: MatDialog, private security:SecurityService) { }
 
   ngOnInit(): void {
+    this.verifyLogin();
+  }
+
+  verifyLogin(){
+    this.security.verifyLogin().subscribe(
+      (response) => this.login = response, (err) => console.log(err)
+    );
   }
 
   showHome(){
