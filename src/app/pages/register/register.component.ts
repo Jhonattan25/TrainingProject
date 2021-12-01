@@ -16,6 +16,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  hide = true;
   spinner: boolean = false;
   cities!: Array<any>;
   //grupo de controles de nuestro formulario

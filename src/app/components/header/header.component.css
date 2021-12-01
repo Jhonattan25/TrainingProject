@@ -3,3 +3,7 @@
     padding: 0 10%;
     background-color: #045b62;
 }
+
+.header .logo{
+    cursor: pointer;
+}
