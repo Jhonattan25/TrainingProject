@@ -72,10 +72,11 @@
             <section class="example-section">
                 <p>Documentos encontrados</p>
                 <div class="options-form">
-                    <mat-checkbox color="primary" class="example-margin" *ngFor="let document of documentType">{{document.name}}</mat-checkbox>
+                    <mat-checkbox color="primary" class="example-margin" *ngFor="let document of documentType">
+                        {{document.name}}</mat-checkbox>
                 </div>
             </section>
-            <div>
+            <!--  <div>
                 <div class="images-form">
                     <p>Imágen del documento (opcional)</p>
                     <input (change)="captureImage($event)" type="file" name="name"><br>
@@ -83,12 +84,25 @@
                 <div *ngIf="preview">
                     <img width="200px" [src]="preview" alt="Imagen subida">
                 </div>
+            </div> -->
+            <div>
+                <div class="images-form">
+                    <p>Imágen del documento (opcional)</p>
+                    <div class="buttonImg">
+                        <button type="button" mat-raised-button color="primary"><label for="fileImage">Subir imagen...
+                            </label></button>
+                        <input id="fileImage" (change)="captureImage($event)" type="file" name="name"><br>
+                    </div>
+                </div>
+                <div class="preview" *ngIf="preview">
+                    <img width="200px" [src]="preview" alt="Imagen subida">
+                </div>
             </div>
             <div>
-                <div class="description-form">
-                    <p>Descripción (opcional)</p>
-                    <textarea name="description" rows="10" cols="40" formControlName="description"></textarea>
-                </div>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Descripción (opcional)</mat-label>
+                    <textarea matInput placeholder="Brinde mas información" formControlName="description"></textarea>
+                </mat-form-field>
                 <div class="alert-danger" *ngIf="form.get('description')?.errors">
                     <div class="container-error-message" *ngIf="form.get('description')?.hasError('maxlength')">
                         El campo descripción debe contener maximo 1000 caracteres

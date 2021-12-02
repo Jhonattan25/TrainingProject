@@ -2,7 +2,7 @@
   text-align: center;
 }
 .formCard {
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -11,10 +11,10 @@
 }
 
 .example-full-width {
-  width: 80%;
+  width: 90%;
 }
 .example-section {
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
   margin-bottom: 20px;
   display: flex;
@@ -55,8 +55,25 @@
   width: 72%;
 }
 
+.description-form {
+  width: 90%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.description-form p {
+  width: 25%;
+  text-align: left;
+}
+
+.description-form textarea {
+  width: 72%;
+}
+
 .buttonsReport .btn {
-  width: 80%;
+  width: 90%;
   color: #4974a5;
   border-color: #00000036;
   margin: 0 auto;
@@ -70,7 +87,7 @@
   color: #721c24;
   background: #f8d7da;
   border-color: #f5c6cb;
-  width: 80%;
+  width: 90%;
   margin: 5px auto;
 }
 
@@ -79,20 +96,20 @@
   text-align: start;
 }
 
-#fileImage{
+/* Image */
+#fichero {
+  display: none;
+}
+
+#fichero2 {
     display: none;
-}
+  }
 
-.images-form .buttonImg{
-    width: 72%;
-}
-
-.images-form .buttonImg button, .images-form .buttonImg label{
-    width: 100%;
-    cursor: pointer;
-}
-
-.preview{
-    margin-top: -20px;
-    margin-bottom: 30px;
+.circle {
+  display: inline-block;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  cursor: pointer;
 }

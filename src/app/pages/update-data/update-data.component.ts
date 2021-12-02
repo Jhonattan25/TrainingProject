@@ -106,11 +106,12 @@ export class UpdateDataComponent implements OnInit {
     //si la validacion del formulario es exitosa...
     Swal.fire({
       icon: 'question',
-      title: 'Desea guardar los cambios?',
+      title: '¿Desea guardar los cambios?',
       showCancelButton: true,
       cancelButtonText: `Cancelar`,
       showConfirmButton: true,
-      confirmButtonText: `Guardar`
+      confirmButtonText: `Guardar`,
+      confirmButtonColor: '#488D95'
     }).then((result) => {
       //Read more about isConfirmed, isDenied below
       if (result.isConfirmed) {

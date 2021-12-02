@@ -1,7 +1,7 @@
 <mat-toolbar class="header" color='primary'>
 </mat-toolbar>
 <mat-toolbar class="header fixed-top" color='primary'>
-    <span (click)="showHome()">Buscar documento</span>
+    <span class="logo" (click)="showHome()">Buscar documento</span>
     <div class="headerButtons" *ngIf="!login">
         <button mat-button (click)="showReportLost()">Perdí mi documento</button>
         <button mat-button (click)="showReportFound()">Encontre un documento</button>
