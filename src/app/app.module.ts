@@ -20,6 +20,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { ActivationComponent } from './pages/activation/activation.component';
 import { UpdateDataComponent } from './pages/update-data/update-data.component';
+import { ModalReportComponent } from './components/modal-report/modal-report.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { UpdateDataComponent } from './pages/update-data/update-data.component';
     RegisterComponent,
     LoginComponent,
     ActivationComponent,
-    UpdateDataComponent
+    UpdateDataComponent,
+    ModalReportComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,7 @@ import { UpdateDataComponent } from './pages/update-data/update-data.component';
     FormsModule,
     ReactiveFormsModule
   ],
+  entryComponents:[ModalReportComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

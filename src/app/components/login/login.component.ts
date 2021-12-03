@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  hide = true;
   spinner: boolean = false;
 
   //grupo de controles de nuestro formulario

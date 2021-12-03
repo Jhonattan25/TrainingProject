@@ -6,3 +6,6 @@
 .btn{
     background-color: #023C41;
 }
+.header .logo{
+    cursor: pointer;
+}
