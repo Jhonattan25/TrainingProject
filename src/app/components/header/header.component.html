@@ -3,9 +3,12 @@
 <mat-toolbar class="header fixed-top" color='primary'>
     <span (click)="showHome()">Buscar documento</span>
     <div class="headerButtons" *ngIf="!login">
-        <button mat-button (click)="showReportLost()">Perdí mi documento</button>
-        <button mat-button (click)="showReportFound()">Encontre un documento</button>
-        <button mat-button (click)="showLogin()">Acceder/Registrar</button>
+        <button mat-button (click)="showReportLost()" *ngIf="!boton1">Perdí mi documento</button>
+        <button mat-button (click)="showReportLost()" class="btn btn-primary" *ngIf="boton1">Perdí mi documento</button>
+        <button mat-button (click)="showReportFound()" *ngIf="!boton2">Encontre un documento</button>
+        <button mat-button (click)="showReportFound()" class="btn btn-primary" *ngIf="boton2">Encontre un documento</button>
+        <button mat-button (click)="showLogin()" *ngIf="!boton3">Acceder/Registrar</button>
+        <button mat-button (click)="showLogin()" class="btn btn-primary" *ngIf="boton3">Acceder/Registrar</button>
     </div>
     <div class="headerButtons" *ngIf="login">
         <button mat-button [matMenuTriggerFor]="lost">Documentos perdidos <mat-icon>arrow_drop_down</mat-icon></button>
