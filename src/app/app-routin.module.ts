@@ -18,6 +18,7 @@ const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'activation', component:ActivationComponent },
     {path: 'updateData', component:UpdateDataComponent },
+    {path: 'myConsultDocuments', component:ConsultLostComponent },
     {path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
