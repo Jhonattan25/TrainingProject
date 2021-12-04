@@ -9,3 +9,13 @@
 .header .logo{
     cursor: pointer;
 }
+.logo{
+    height: 130px;
+}
+.logo img{
+    height:160px;
+}
+.disabled {
+    pointer-events:none;
+    opacity:.5;
+   }
