@@ -142,7 +142,7 @@ export class UpdateDataComponent implements OnInit {
               //se imprime el status del error
               Swal.fire({
                 icon: 'warning',
-                title: 'Problemas de servidor',
+                title: 'Problemas en el servidor',
                 text: 'En estos momentos tenemos fallas en el sistema ' + error.status,
                 background: '#fff',
                 confirmButtonColor: '#045b62'

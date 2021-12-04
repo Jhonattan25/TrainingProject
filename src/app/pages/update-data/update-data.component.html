@@ -21,10 +21,6 @@
                         <input matInput placeholder="Ingresar email" type="email" formControlName="email"
                             [formControl]="inputFormControl">
                     </mat-form-field>
-                    <!-- <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Contraseña</mat-label>
-                        <input matInput placeholder="Ingresar contraseña" type="password" formControlName="password">
-                    </mat-form-field> -->
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Ciudad</mat-label>
                         <mat-select  formControlName="cityCode">
@@ -38,14 +34,14 @@
                     <button *ngIf="!edit" class="btn" mat-stroked-button (click)="onEnable()">Editar</button>
                 </div>
                 <div class="buttonsUpdate">
-                    <div class="buttonsUpgrade" *ngIf="edit">
+                    <div class="buttonUpdate" *ngIf="edit">
                         <button *ngIf="!spinner" class="btn" mat-stroked-button type="submit">Actualizar</button>
                         <button *ngIf="spinner" class="btn" mat-stroked-button type="submit">
                             <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                             <span class="sr-only"> Actualizando...</span>
                         </button>
                     </div>
-                    <div class="buttonsUpgrade" *ngIf="edit">
+                    <div class="buttonCancel" *ngIf="edit">
                         <button class="btn" mat-stroked-button (click)=cancel()>Cancelar</button>
                     </div>
                 </div>

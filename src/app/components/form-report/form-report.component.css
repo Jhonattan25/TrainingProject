@@ -13,26 +13,6 @@
 .example-full-width {
   width: 80%;
 }
-.example-section {
-  width: 80%;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.example-section p {
-  width: 25%;
-  text-align: left;
-}
-
-.options-form {
-  width: 72%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: start;
-  grid-gap: 5px;
-}
 
 .example-margin {
   margin: 2px;
@@ -41,18 +21,33 @@
 .images-form {
   width: 80%;
   margin: 0 auto;
+  margin-top: 0px;
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
 }
 
 .images-form p {
-  width: 25%;
+  width: 35%;
   text-align: left;
 }
 
-.images-form input {
-  width: 72%;
+
+#fileImage{
+  display: none;
+}
+
+.images-form .buttonImg{
+  width: 60%;
+}
+
+.images-form .buttonImg button, .images-form .buttonImg label{
+  width: 100%;
+  cursor: pointer;
+}
+
+.preview{
+ margin-top: 10px;
 }
 
 .buttonsReport .btn {
@@ -71,28 +66,11 @@
   background: #f8d7da;
   border-color: #f5c6cb;
   width: 80%;
-  margin: 5px auto;
+  margin: 15px auto;
+  margin-top: -10px;
 }
 
 .container-error-message {
   padding: 2px;
   text-align: start;
-}
-
-#fileImage{
-    display: none;
-}
-
-.images-form .buttonImg{
-    width: 72%;
-}
-
-.images-form .buttonImg button, .images-form .buttonImg label{
-    width: 100%;
-    cursor: pointer;
-}
-
-.preview{
-    margin-top: -20px;
-    margin-bottom: 30px;
 }

@@ -67,11 +67,8 @@ export class LoginComponent implements OnInit {
             showConfirmButton: false,
             timer: 1400
           })
-          //dirigimos al usuario a la ruta /ayuda
-          //this.route.navigate( ['/ayuda']);
           this.router.navigate( ['/']);
           this.dialogRef.close();
-          window.location.reload();
       },
       //si ocurre un error en el proceso de envío del formulario...
       (error) => {

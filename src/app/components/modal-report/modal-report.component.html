@@ -72,17 +72,6 @@
                     </div>
                 </div>
                 <div>
-                    <div class="description-form">
-                        <p>Descripción (opcional)</p>
-                        <textarea name="description" rows="10" cols="40" formControlName="description"></textarea>
-                    </div>
-                    <div class="alert-danger" *ngIf="form.get('description')?.errors">
-                        <div class="container-error-message" *ngIf="form.get('description')?.hasError('maxlength')">
-                            El campo descripción debe contener maximo 1000 caracteres
-                        </div>
-                    </div>
-                </div>
-                <div>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Descripción (opcional)</mat-label>
                         <textarea matInput placeholder="Brinde mas información"
@@ -95,17 +84,20 @@
                     </div>
                 </div>
                 <div>
-                    <input id="fichero" type="file">
-                    <label for="fichero" class="circle"></label>
-                </div>
-                <div class="buttonsReport">
-                    <button *ngIf="!spinner" type="submit" class="btnEnterLogin btn" mat-stroked-button color="primary"
-                        [disabled]="!form.valid">Modificar</button>
-
-                    <button *ngIf="spinner" class="btn" mat-stroked-button>
-                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                        <span class="sr-only"> Modificando...</span>
-                    </button>
+                    <div class="buttonsModify">
+                        <div class="buttonModify">
+                            <button *ngIf="!spinner" type="submit" class="btn" mat-stroked-button
+                                color="primary" [disabled]="!form.valid">Modificar</button>
+                            <button *ngIf="spinner" class="btn" mat-stroked-button>
+                                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                <span class="sr-only"> Modificando...</span>
+                            </button>
+                        </div>
+                        <div class="buttonCancel">
+                            <button class="btn" type="button" mat-stroked-button
+                                (click)=cancelModify()>Cancelar</button>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>

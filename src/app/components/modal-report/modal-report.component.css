@@ -1,5 +1,6 @@
 .elementsformCard {
   text-align: center;
+  width: 100%;
 }
 .formCard {
   width: 100%;
@@ -13,73 +14,34 @@
 .example-full-width {
   width: 90%;
 }
-.example-section {
-  width: 90%;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.example-section p {
-  width: 25%;
-  text-align: left;
-}
-
-.options-form {
-  width: 72%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: start;
-  grid-gap: 5px;
-}
 
 .example-margin {
   margin: 2px;
 }
 
-.images-form {
-  width: 80%;
+.buttonsModify {
+  width: 90%;
   margin: 0 auto;
-  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
 }
 
-.images-form p {
-  width: 25%;
-  text-align: left;
+.buttonsModify .buttonModify .btn {
+  border: 1px solid #3f51b5;
 }
 
-.images-form input {
-  width: 72%;
+.buttonsModify .buttonModify, .buttonsModify .buttonCancel{
+  width: 40%;
 }
 
-.description-form {
-  width: 90%;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.description-form p {
-  width: 25%;
-  text-align: left;
-}
-
-.description-form textarea {
-  width: 72%;
-}
-
-.buttonsReport .btn {
-  width: 90%;
+.buttonsModify .btn {
+  width: 100%;
   color: #4974a5;
   border-color: #00000036;
   margin: 0 auto;
 }
 
-.buttonsReport .spinner-border {
+.buttonsModify .spinner-border {
   animation-duration: 0.75s;
 }
 
@@ -88,7 +50,8 @@
   background: #f8d7da;
   border-color: #f5c6cb;
   width: 90%;
-  margin: 5px auto;
+  margin: 15px auto;
+  margin-top: -10px;
 }
 
 .container-error-message {
@@ -102,14 +65,9 @@
 }
 
 #fichero2 {
-    display: none;
-  }
+  display: none;
+}
 
-.circle {
-  display: inline-block;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  cursor: pointer;
+.dialog-content {
+  width: 600px;
 }

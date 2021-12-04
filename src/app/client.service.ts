@@ -5,7 +5,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ClientService {
-  
+
   getRequestConsultDocumentTypes(route: string) {
     //configuracion del tipo de respuesta esperado
     let config: any = {
@@ -183,5 +183,30 @@ export class ClientService {
 
     //Notese que como tercer parametro se pasa la configuracion de la request
     return this.http.get(route, config);
+  }
+
+  putRequestUpdateDocument(route: string, data: any) {
+    //configuracion del tipo de respuesta esperado
+    let config: any = {
+      responseType: "json"
+    }
+  
+    const header = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    config["headers"] = header;
+  
+    return this.http.put(route, data, config);
+  }
+
+  deleteRequestDeleteDocument(route: string) {
+    //configuracion del tipo de respuesta esperado
+    let config: any = {
+      responseType: "json"
+    }
+
+    const header = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`);
+    config["headers"] = header;
+
+    //Notese que como tercer parametro se pasa la configuracion de la request
+    return this.http.delete(route, config);
   }
 }

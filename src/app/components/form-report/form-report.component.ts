@@ -4,7 +4,6 @@ import { ClientService } from '../../client.service';
 //importacion de clases necesarias para manejar formularios reactivos y el routing
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
 import Swal from 'sweetalert2';
 
 @Component({
@@ -40,6 +39,7 @@ export class FormReportComponent implements OnInit {
       fullName: ['', [Validators.required, Validators.minLength(1), Validators.maxLength(100)]],
       email: ['', [Validators.required, Validators.email]],
       cityCode: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(6)]],
+      documentType: ['', [Validators.required]],
       description: ['', Validators.maxLength(1000)]
     });
   }
@@ -102,7 +102,10 @@ export class FormReportComponent implements OnInit {
   //metodo que se llama para enviar el formulario cuando ocurre el evento (ngSubmit) 
   //que se encuentra referenciado en el form del HTML
   onSubmit() {
-    const formData = new FormData();
+
+    console.log(this.form.value.documentType);
+    
+    /* const formData = new FormData();
     this.images.forEach((element: any) => {
       formData.append('files', element);
     });
@@ -124,7 +127,6 @@ export class FormReportComponent implements OnInit {
         description: this.form.value.description,
         category: category,
         cityCode: this.form.value.cityCode,
-        //image: formData
       }).subscribe(
         //cuando la respuesta del server llega es emitida por el observable mediante next()..
         (response: any) => {
@@ -151,7 +153,7 @@ export class FormReportComponent implements OnInit {
       //y se imprimira el mensaje "Form error"
     } else {
       console.log("Form error");
-    }
+    } */
   }
 
   uploadImage(data: any) {
