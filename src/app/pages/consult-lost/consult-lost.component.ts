@@ -12,37 +12,64 @@ import Swal from 'sweetalert2';
   styleUrls: ['./consult-lost.component.css']
 })
 export class ConsultLostComponent implements OnInit {
-  documents!:Array<any>;
+  documents!: Array<any>;
 
-  constructor(private client:ClientService, private router: Router, private dialog: MatDialog) { }
+  constructor(private client: ClientService, private router: Router, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.uploadDocument();
   }
 
-  uploadDocument(){
-    this.client.getRequestConsultDocuments("http://localhost:10101/consultDocuments/?category=1").subscribe(
-      //cuando la respuesta del server llega es emitida por el observable mediante next()..
-      (response: any) => {
-        this.documents = response.documents;
-        console.log(response);
-    },
-    //si ocurre un error en el proceso de envío del formulario...
-    (error) => {
-      localStorage.removeItem('token');
-      this.router.navigate( ['/']);
-      this.dialog.open(LoginComponent);
-      Swal.fire({
-        icon: 'warning',
-        title: 'Página no permitida',
-        text: 'Por favor inicie sesión',
-        background: '#fff',
-        confirmButtonColor: '#045b62'
-      });
-      //se imprime el status del error
-      console.log(error.status);
-      }
-    )
-  }
+  uploadDocument() {
+    if (this.router.url == '/consultLost') {
+      console.log(this.router.url);
 
+      this.client.getRequestConsultDocuments("http://localhost:10101/consultDocuments/?category=1").subscribe(
+        //cuando la respuesta del server llega es emitida por el observable mediante next()..
+        (response: any) => {
+          this.documents = response.documents;
+          console.log(response);
+        },
+        //si ocurre un error en el proceso de envío del formulario...
+        (error) => {
+          localStorage.removeItem('token');
+          this.router.navigate(['/']);
+          this.dialog.open(LoginComponent);
+          Swal.fire({
+            icon: 'warning',
+            title: 'Página no permitida',
+            text: 'Por favor inicie sesión',
+            background: '#fff',
+            confirmButtonColor: '#045b62'
+          });
+          //se imprime el status del error
+          console.log(error.status);
+        }
+      )
+    } else if (this.router.url == '/myConsultDocuments') {
+      this.client.getRequestMyConsultDocuments("http://localhost:10101/myConsultDocuments/?category=1").subscribe(
+        //cuando la respuesta del server llega es emitida por el observable mediante next()..
+        (response: any) => {
+          this.documents = response.documents;
+          console.log(response);
+        },
+        //si ocurre un error en el proceso de envío del formulario...
+        (error) => {
+          localStorage.removeItem('token');
+          this.router.navigate(['/']);
+          this.dialog.open(LoginComponent);
+          Swal.fire({
+            icon: 'warning',
+            title: 'Página no permitida',
+            text: 'Por favor inicie sesión',
+            background: '#fff',
+            confirmButtonColor: '#045b62'
+          });
+          //se imprime el status del error
+          console.log(error.status);
+        }
+      )
+
+    }
+  }
 }
