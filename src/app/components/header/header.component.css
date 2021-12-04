@@ -3,7 +3,19 @@
     padding: 0 10%;
     background-color: #045b62;
 }
-
+.btn{
+    background-color: #023C41;
+}
 .header .logo{
     cursor: pointer;
 }
+.logo{
+    height: 130px;
+}
+.logo img{
+    height:160px;
+}
+.disabled {
+    pointer-events:none;
+    opacity:.5;
+   }

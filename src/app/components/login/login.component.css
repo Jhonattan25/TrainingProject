@@ -5,19 +5,23 @@
  .example-full-width{
      width: 80%;
  }
- 
+ img{
+    width: 120px;
+ }
  .buttonsLogin{
      width: 80%;
      display: flex;
      justify-content: space-between;
      margin: 0 auto;
  }
- 
- .buttonsLogin .btn{
+ .buttonsLogin {
      color: #4974a5;
      border-color: #00000036;
  }
 
+ .btnEnterLogin{
+    border: 1px solid #3F51B5;
+ }
  .alert-danger{
     color: #721c24;
     background: #f8d7da;

@@ -12,6 +12,9 @@ import {SecurityService} from '../../services/security.service'
 export class HeaderComponent implements OnInit {
 
   login:boolean = localStorage.getItem('token')?true:false;
+  boton1=false;
+  boton2=false;
+  boton3=false;
 
   constructor(private router: Router, private dialog: MatDialog, private security:SecurityService) { }
 
@@ -27,14 +30,23 @@ export class HeaderComponent implements OnInit {
 
   showHome(){
     this.router.navigate(['/']);
+    this.boton1=false;
+    this.boton2=false;
+    this.boton1=false;
   }
 
   showReportLost(){
     this.router.navigate(['/reportLost']);
+    this.boton1=true;
+    this.boton2=false;
+    this.boton3=false;
   }
 
   showReportFound(){
     this.router.navigate(['/reportFound']);
+    this.boton1=false;
+    this.boton2=true;
+    this.boton3=false;
   }
 
   showLogin(){
