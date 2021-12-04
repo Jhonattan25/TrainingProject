@@ -41,18 +41,15 @@
 .images-form {
   width: 80%;
   margin: 0 auto;
+  margin-top: 0px;
   margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
 }
 
 .images-form p {
-  width: 25%;
+  width: 35%;
   text-align: left;
-}
-
-.images-form input {
-  width: 72%;
 }
 
 .buttonsReport .btn {
@@ -84,7 +81,7 @@
 }
 
 .images-form .buttonImg{
-    width: 72%;
+    width: 60%;
 }
 
 .images-form .buttonImg button, .images-form .buttonImg label{
@@ -93,6 +90,5 @@
 }
 
 .preview{
-    margin-top: -20px;
-    margin-bottom: 30px;
+   margin-top: 10px;
 }

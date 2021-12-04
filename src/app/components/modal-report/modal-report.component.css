@@ -1,5 +1,6 @@
 .elementsformCard {
   text-align: center;
+  width: 100%;
 }
 .formCard {
   width: 100%;
@@ -112,4 +113,8 @@
   height: 100px;
   background-color: red;
   cursor: pointer;
+}
+
+.dialog-content { 
+  width: 600px;
 }

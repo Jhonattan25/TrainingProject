@@ -14,7 +14,6 @@ import { ModalReportComponent } from '../modal-report/modal-report.component';
 export class TableReportComponent implements OnInit, AfterViewInit {
 
   @Input() documents!: Array<any>;
-  //  displayedColumns: string[] = ['No', 'Número de documento', 'Nombre completo', 'Ciudad', 'Fecha de reporte'];
 
   displayedColumns: string[] = ['id', 'documentNumber', 'fullName', 'cityName', 'date', 'actions'];
   dataSource = new MatTableDataSource();
@@ -25,13 +24,12 @@ export class TableReportComponent implements OnInit, AfterViewInit {
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    setInterval(()=>{
+    setInterval(() => {
       this.dataSource.data = this.documents;
     }, 2000);
   }
 
   ngAfterViewInit() {
-    console.log("HELLO" + this.documents);
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -41,40 +39,44 @@ export class TableReportComponent implements OnInit, AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  onEditReportDocument(element:any){
+  onEditReportDocument(element: any) {
     this.openDialog(element);
   }
 
-  onDeleteReportDocument(element:any){
+  onDeleteReportDocument(element: any) {
     Swal.fire({
       icon: 'question',
-      title: '¿Desea deshabilitar este reporte?',
+      title: '¿Desea eliminar este reporte?',
       showCancelButton: true,
       cancelButtonText: `Cancelar`,
       showConfirmButton: true,
-      confirmButtonText: `Deshabilitar`,
+      confirmButtonText: `Eliminar`,
       confirmButtonColor: '#488D95'
     }).then((result) => {
       //Read more about isConfirmed, isDenied below
       if (result.isConfirmed) {
-        console.log('Reporte deshabilitado');
-        
+        console.log('Reporte eliminado');
+        for (const key in this.documents) {
+          if (this.documents[key].id === element.id) {
+            this.documents.splice(parseInt(key), 1);
+            break;
+          }
+        }
       } else if (result.isDenied) {
-        Swal.fire('El reporte no se ha deshabilitado', '', 'info')
+        Swal.fire('El reporte no se ha eliminado', '', 'info')
       }
     });
   }
 
-  openDialog(element:any):void{
+  openDialog(element: any): void {
     const config = {
-      data:{
+      data: {
         message: element ? 'Editar reporte' : 'Error',
         content: element
       }
     };
-
     const dialogRef = this.dialog.open(ModalReportComponent, config);
-    dialogRef.afterClosed().subscribe(result =>{
+    dialogRef.afterClosed().subscribe(result => {
       console.log(`Result ${result}`);
     });
   }

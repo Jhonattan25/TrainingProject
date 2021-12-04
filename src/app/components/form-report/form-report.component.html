@@ -69,22 +69,12 @@
                     </div>
                 </div>
             </div>
-            <section class="example-section">
-                <p>Documentos encontrados</p>
-                <div class="options-form">
-                    <mat-checkbox color="primary" class="example-margin" *ngFor="let document of documentType">
-                        {{document.name}}</mat-checkbox>
-                </div>
-            </section>
-            <!--  <div>
-                <div class="images-form">
-                    <p>Imágen del documento (opcional)</p>
-                    <input (change)="captureImage($event)" type="file" name="name"><br>
-                </div>
-                <div *ngIf="preview">
-                    <img width="200px" [src]="preview" alt="Imagen subida">
-                </div>
-            </div> -->
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Documentos</mat-label>
+                <mat-select multiple formControlName="documentType">
+                    <mat-option *ngFor="let document of documentType" [value]="document.id">{{document.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
             <div>
                 <div class="images-form">
                     <p>Imágen del documento (opcional)</p>
@@ -92,10 +82,10 @@
                         <button type="button" mat-raised-button color="primary"><label for="fileImage">Subir imagen...
                             </label></button>
                         <input id="fileImage" (change)="captureImage($event)" type="file" name="name"><br>
+                        <div class="preview" *ngIf="preview">
+                            <img width="200px" [src]="preview" alt="Imagen subida">
+                        </div>
                     </div>
-                </div>
-                <div class="preview" *ngIf="preview">
-                    <img width="200px" [src]="preview" alt="Imagen subida">
                 </div>
             </div>
             <div>
