@@ -8,7 +8,7 @@
                     <mat-label>Numero de documento</mat-label>
                     <input matInput placeholder="Ingresar numero de documento" formControlName="identificationNumber">
                 </mat-form-field>
-                <!-- <div class="alert-danger"
+                <div class="alert-danger"
                     *ngIf="form.get('identificationNumber')?.errors && (form.get('identificationNumber')?.dirty || form.get('identificationNumber')?.touched)">
                     <div class="container-error-message" *ngIf="form.get('identificationNumber')?.hasError('required')">
                         El campo documento es requerido
@@ -19,19 +19,16 @@
                     <div class="container-error-message" *ngIf="form.get('identificationNumber')?.hasError('max')">
                         El campo documento debe contener máximo 10 caracteres
                     </div>
-                </div> -->
+                </div>
                 <mat-form-field class="example-full-width" appearance="fill">
                     <mat-label>Contraseña</mat-label>
-                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Ingresar contraseña" formControlName="password">
+                    <input matInput [type]="hide ? 'password' : 'text'" placeholder="Ingresar contraseña"
+                        formControlName="password">
                     <button type="button" mat-icon-button matSuffix (click)="hide = !hide">
                         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </button>
                 </mat-form-field>
-                <!-- <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>Contraseña</mat-label>
-                    <input matInput placeholder="Ingresar contraseña" type="password" formControlName="password">
-                </mat-form-field> -->
-                <!--  <div class="alert-danger"
+                <div class="alert-danger"
                     *ngIf="form.get('password')?.errors && (form.get('password')?.dirty || form.get('password')?.touched)">
                     <div class="container-error-message" *ngIf="form.get('password')?.hasError('required')">
                         El campo contraseña es requerido
@@ -42,17 +39,24 @@
                     <div class="container-error-message" *ngIf="form.get('password')?.hasError('maxlength')">
                         El campo contraseña debe contener máximo 15 caracteres
                     </div>
-                </div> -->
+                </div>
             </div>
-            <div class="buttonsLogin">
-                <button *ngIf="!spinner" class="btnEnterLogin btn" mat-stroked-button type="submit">Ingresar</button>
-                <button *ngIf="spinner" class="btn" mat-stroked-button>
-                    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                    <span class="sr-only"></span>
-                </button>
 
-                <button class="btnEnterRegister btn" type="button" mat-stroked-button
-                    (click)="showRegister()">Registrar</button>
+            <div>
+                <div class="buttonsLogin">
+                    <div class="buttonEnter">
+                        <button *ngIf="!spinner" class="btnEnterLogin btn" mat-stroked-button
+                            type="submit">Ingresar</button>
+                        <button *ngIf="spinner" class="btn" mat-stroked-button>
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            <span class="sr-only"></span>
+                        </button>
+                    </div>
+                    <div class="buttonCancel">
+                        <button class="btnEnterRegister btn" type="button" mat-stroked-button
+                            (click)="showRegister()">Registrar</button>
+                    </div>
+                </div>
             </div>
         </form>
     </div>

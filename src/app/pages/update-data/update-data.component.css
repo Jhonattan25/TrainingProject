@@ -17,7 +17,25 @@ input:disabled {
 }
 
 .buttonsUpdate {
+  width: 80%;
   display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.buttonsUpdate .btn {
+  width: 100%;
+  color: #4974a5;
+  border-color: #00000036;
+}
+
+.buttonsUpdate .buttonUpdate .btn{
+  border: 1px solid #3f51b5;
+}
+
+.buttonsUpdate .buttonUpdate,
+.buttonsUpdate .buttonCancel {
+  width: 40%;
 }
 
 .elementsCard {
@@ -28,19 +46,8 @@ input:disabled {
   width: 80%;
 }
 
-.buttonsUpgrade {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.buttonsUpgrade .btn {
-  width: 50%;
-  color: #4974a5;
-  border-color: #00000036;
-}
-
 .buttonsEdit .btn {
-  width: 50%;
+  width: 80%;
   color: #4974a5;
   border-color: #00000036;
 }

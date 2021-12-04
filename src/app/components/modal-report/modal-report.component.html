@@ -86,7 +86,7 @@
                 <div>
                     <div class="buttonsModify">
                         <div class="buttonModify">
-                            <button *ngIf="!spinner" type="submit" class="btnEnterLogin btn" mat-stroked-button
+                            <button *ngIf="!spinner" type="submit" class="btn" mat-stroked-button
                                 color="primary" [disabled]="!form.valid">Modificar</button>
                             <button *ngIf="spinner" class="btn" mat-stroked-button>
                                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -94,7 +94,8 @@
                             </button>
                         </div>
                         <div class="buttonCancel">
-                            <button class="btn" type="button" mat-stroked-button (click)=cancelModify()>Cancelar</button>
+                            <button class="btn" type="button" mat-stroked-button
+                                (click)=cancelModify()>Cancelar</button>
                         </div>
                     </div>
                 </div>
