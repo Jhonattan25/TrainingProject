@@ -14,73 +14,30 @@
 .example-full-width {
   width: 90%;
 }
-.example-section {
-  width: 90%;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.example-section p {
-  width: 25%;
-  text-align: left;
-}
-
-.options-form {
-  width: 72%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: start;
-  grid-gap: 5px;
-}
 
 .example-margin {
   margin: 2px;
 }
 
-.images-form {
-  width: 80%;
+.buttonsModify {
+  width: 92%;
   margin: 0 auto;
-  margin-bottom: 20px;
   display: flex;
   justify-content: space-between;
 }
 
-.images-form p {
-  width: 25%;
-  text-align: left;
+.buttonsModify .buttonModify, .buttonsModify .buttonCancel{
+  width: 40%;
 }
 
-.images-form input {
-  width: 72%;
-}
-
-.description-form {
-  width: 90%;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.description-form p {
-  width: 25%;
-  text-align: left;
-}
-
-.description-form textarea {
-  width: 72%;
-}
-
-.buttonsReport .btn {
+.buttonsModify .btn {
   width: 90%;
   color: #4974a5;
   border-color: #00000036;
   margin: 0 auto;
 }
 
-.buttonsReport .spinner-border {
+.buttonsModify .spinner-border {
   animation-duration: 0.75s;
 }
 
@@ -103,18 +60,9 @@
 }
 
 #fichero2 {
-    display: none;
-  }
-
-.circle {
-  display: inline-block;
-  border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  background-color: red;
-  cursor: pointer;
+  display: none;
 }
 
-.dialog-content { 
+.dialog-content {
   width: 600px;
 }

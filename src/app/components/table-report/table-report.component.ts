@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalReportComponent } from '../modal-report/modal-report.component';
+import { ClientService } from '../../client.service';
 
 @Component({
   selector: 'app-table-report',
@@ -21,11 +22,12 @@ export class TableReportComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort!: MatSort;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(private client: ClientService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    setInterval(() => {
+    let interval = setInterval(() => {
       this.dataSource.data = this.documents;
+     //if(this.documents) clearInterval(interval);
     }, 2000);
   }
 
@@ -55,13 +57,21 @@ export class TableReportComponent implements OnInit, AfterViewInit {
     }).then((result) => {
       //Read more about isConfirmed, isDenied below
       if (result.isConfirmed) {
-        console.log('Reporte eliminado');
-        for (const key in this.documents) {
-          if (this.documents[key].id === element.id) {
-            this.documents.splice(parseInt(key), 1);
-            break;
+        this.client.deleteRequestDeleteDocument(`http://localhost:10101/deleteDocument/?id=${element.id}`).subscribe(
+          (response: any) => {
+            console.log(response);
+            for (const key in this.documents) {  
+              if (this.documents[key].id === element.id) {
+                console.log('entra');
+                this.documents.splice(parseInt(key), 1);
+                break;
+              }
+            }
+          },
+          (error) =>{
+            console.log(error.status);
           }
-        }
+        );
       } else if (result.isDenied) {
         Swal.fire('El reporte no se ha eliminado', '', 'info')
       }

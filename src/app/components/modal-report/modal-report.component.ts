@@ -72,6 +72,10 @@ export class ModalReportComponent implements OnInit {
     });
   }
 
+  cancelModify() {
+    this.dialog.close(true);
+  }
+
   onSubmit() {
     Swal.fire({
       icon: 'question',
