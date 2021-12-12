@@ -105,7 +105,7 @@ export class FormReportComponent implements OnInit {
 
     console.log(this.form.value.documentType);
     
-    /* const formData = new FormData();
+     const formData = new FormData();
     this.images.forEach((element: any) => {
       formData.append('files', element);
     });
@@ -153,7 +153,7 @@ export class FormReportComponent implements OnInit {
       //y se imprimira el mensaje "Form error"
     } else {
       console.log("Form error");
-    } */
+    }
   }
 
   uploadImage(data: any) {

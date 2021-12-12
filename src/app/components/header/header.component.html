@@ -19,7 +19,7 @@
         </mat-menu>
         <button mat-button [matMenuTriggerFor]="found">Documentos encontrados <mat-icon>arrow_drop_down</mat-icon></button>
         <mat-menu #found="matMenu">
-            <button mat-menu-item><mat-icon>find_in_page</mat-icon>Mis reportes</button>
+            <button mat-menu-item (click)="showMyDocumentsFound()"><mat-icon>find_in_page</mat-icon>Mis reportes</button>
             <button mat-menu-item (click)="showDocumentsFound()"><mat-icon>search</mat-icon>Consultar todos</button>
             <button mat-menu-item (click)="showReportFound()"><mat-icon>unarchive</mat-icon>Reportar documento</button>           
         </mat-menu>
