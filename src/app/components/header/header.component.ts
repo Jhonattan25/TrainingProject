@@ -61,6 +61,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/myConsultDocuments']);
   }
 
+  showMyDocumentsFound(){
+    this.router.navigate(['/myConsultDocumentsFound']);
+  }
+
   showDocumentsFound(){
     this.router.navigate(['/consultFound']);
   }
