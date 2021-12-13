@@ -113,7 +113,7 @@ img {
 
 .contentCard{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   padding: 0 10%;
   flex-wrap: wrap;
 }
